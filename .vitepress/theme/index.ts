@@ -8,6 +8,8 @@ import { HomeFooter } from '@theojs/lumen'
 import { Footer_Data } from '../data/footerData'
 import { ShareButton } from '@theojs/lumen'
 import { umamiAnalytics } from '@theojs/lumen'
+import { DocAsideLogo } from '@theojs/lumen'
+import { Aside_Data } from '../data/asideData'
 
 export default {
   extends: DefaultTheme,
@@ -15,6 +17,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'layout-bottom': () => h(HomeFooter, { Footer_Data }),
+      'aside-ads-before': () => h(DocAsideLogo, { Aside_Data }),
       'aside-outline-before': () => h(ShareButton, {
         buttonIcon: 'fa6-solid:share-nodes',
         buttonText: '分享此页面',

@@ -7,21 +7,24 @@ hero:
   text: '开发安全运维'
   textsuffix: '知识文档'
   tagline: Stay hungry. Stay foolish.
+  image:
+    src: images/TypeScript.png
+    alt: TypeScript
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 查看文档
+      link: posts/3edbef81
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 在 Github 查看
+      link: https://github.com/J1nH4ng/DevSecOps-Wiki
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 系统化的
+    details: 根据业务的发布需求，从最小的系统架构逐步扩大到复杂的架构文档。
+  - title: 详细化的
+    details: 详细介绍每一个步骤以及标注出可能遇到的常见问题的避免方法与解决方式。
+  - title: 持续更新的
+    details: 怕什么真理无穷，进一寸有一寸的欢喜。求知若渴，虚心若愚。
 ---
 
 <Home />

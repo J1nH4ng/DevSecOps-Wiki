@@ -2,27 +2,70 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  lang: 'zh-CN',
   title: "DevSecOps Wiki",
   description: "DevSecOps Wiki",
+  metaChunk: true,
+  cleanUrls: true,
+  rewrites: {
+    'docs/cve/0day.md': 'posts/a7fc9217.md',
+    'docs/prepare/start.md': 'posts/3edbef81.md'
+  },
+  sitemap: {
+    hostname: 'https://wiki.4r3al.team'
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '主页', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '<iconify-icon icon="fa6-solid:bolt" style="margin-right:0.25em;color:#63E6BE;"></iconify-icon>快速开始',
+        link: 'wiki/3edbef81'
+      },
+      {
+        text: '<iconify-icon icon="fa6-solid:bug" style="margin-right:0.25em;color:#FF4500;" alt="bug"></iconify-icon>提交反馈',
+        link: 'https://github.com/J1nH4ng/DevSecOps-Wiki/issues'
+      }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'CVE 列表',
+        collapsed: true,
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '高危漏洞', link: 'posts/a7fc9217' }
+        ]
+      },
+      {
+        text: '前置准备',
+        collapsed: true,
+        items: [
+          { text: '创建服务器', link: 'posts/3edbef81' }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/J1nH4ng/DevSecOps-Wiki' }
+    ],
+
+    lastUpdated: {
+      text: '最近更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
+
+    search: {
+      provider: 'local'
+    },
+
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
+    },
+
+    editLink: {
+      pattern: 'https://github.com/J1nH4ng/DevSecOps-Wiki/edit/main/docs/:path'
+    }
   }
 })
