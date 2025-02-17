@@ -38,7 +38,7 @@ export default defineConfig({
         text: '前置准备',
         collapsed: true,
         items: [
-          { text: '创建服务器', link: 'posts/3edbef81' }
+          { text: '创建配置服务器', link: 'posts/3edbef81' }
         ]
       }
     ],
