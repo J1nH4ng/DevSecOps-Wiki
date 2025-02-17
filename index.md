@@ -4,8 +4,9 @@ layout: home
 
 hero:
   name: "DevSecOps Wiki"
-  text: "DevSecOps Wiki"
-  tagline: My great project tagline
+  text: '开发安全运维'
+  textsuffix: '知识文档'
+  tagline: Stay hungry. Stay foolish.
   actions:
     - theme: brand
       text: Markdown Examples
@@ -23,3 +24,4 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
+<Home />
