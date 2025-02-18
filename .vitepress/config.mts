@@ -1,13 +1,11 @@
-// import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress';
 import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog';
-import { MermaidPlugin, withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
-//export default defineConfig({
-export default withMermaid({
+export default defineConfig({
   vite: {
     plugins: [
       GitChangelog({
@@ -90,12 +88,6 @@ export default withMermaid({
 
     editLink: {
       pattern: 'https://github.com/J1nH4ng/DevSecOps-Wiki/edit/main/docs/:path'
-    },
-
-    mermaid: {},
-
-    MermaidPlugin: {
-      class: "mermaid my-class"
     }
   }
 })
