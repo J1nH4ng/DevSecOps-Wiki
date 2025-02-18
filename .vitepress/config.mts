@@ -1,11 +1,13 @@
-import { defineConfig } from 'vitepress'
+// import { defineConfig } from 'vitepress';
 import {
   GitChangelog,
   GitChangelogMarkdownSection,
-} from '@nolebase/vitepress-plugin-git-changelog'
+} from '@nolebase/vitepress-plugin-git-changelog';
+import { MermaidPlugin, withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+//export default defineConfig({
+export default withMermaid({
   vite: {
     plugins: [
       GitChangelog({
@@ -27,7 +29,8 @@ export default defineConfig({
     theme: {
       light: 'rose-pine-dawn',
       dark: 'rose-pine-moon'
-    }
+    },
+    math: true
   },
   rewrites: {
     'docs/cve/0day.md': 'posts/a7fc9217.md',
@@ -87,6 +90,12 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/J1nH4ng/DevSecOps-Wiki/edit/main/docs/:path'
+    },
+
+    mermaid: {},
+
+    MermaidPlugin: {
+      class: "mermaid my-class"
     }
   }
 })
