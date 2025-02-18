@@ -1,18 +1,37 @@
 import { defineConfig } from 'vitepress'
+import {
+  GitChangelog,
+  GitChangelogMarkdownSection,
+} from '@nolebase/vitepress-plugin-git-changelog'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  vite: {
+    plugins: [
+      GitChangelog({
+        repoURL: () => 'https://github.com/J1nH4ng/DevSecOps-Wiki'
+      }),
+      GitChangelogMarkdownSection(),
+    ]
+  },
   lang: 'zh-CN',
   title: "DevSecOps Wiki",
   description: "DevSecOps Wiki",
   metaChunk: true,
   cleanUrls: true,
-  rewrites: {
-    'docs/cve/0day.md': 'posts/a7fc9217.md',
-    'docs/prepare/start.md': 'posts/3edbef81.md'
-  },
   sitemap: {
     hostname: 'https://wiki.4r3al.team'
+  },
+  markdown: {
+    lineNumbers: true,
+    theme: {
+      light: 'rose-pine-dawn',
+      dark: 'rose-pine-moon'
+    }
+  },
+  rewrites: {
+    'docs/cve/0day.md': 'posts/a7fc9217.md',
+    'docs/prepare/server.md': 'posts/3edbef81.md'
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

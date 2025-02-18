@@ -10,6 +10,8 @@ import { ShareButton } from '@theojs/lumen'
 import { umamiAnalytics } from '@theojs/lumen'
 import { DocAsideLogo } from '@theojs/lumen'
 import { Aside_Data } from '../data/asideData'
+import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client'
+import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 
 export default {
   extends: DefaultTheme,
@@ -28,6 +30,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.use(NolebaseGitChangelogPlugin),
     app.component('Home', HomeUnderline),
     umamiAnalytics({id: '', src: 'https://umami.4r3al.team'})
   }
