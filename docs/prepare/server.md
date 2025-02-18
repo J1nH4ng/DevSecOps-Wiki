@@ -8,6 +8,12 @@ head:
       - name: keywords
         content: Linux
 outline: deep
+prev:
+  text:
+  link:
+next:
+  text: 服务器初始化
+  link: posts/7ec143e2
 ---
 
 # 服务器的创建与配置
