@@ -29,7 +29,8 @@ export default defineConfig({
 
     optimizeDeps: {
       exclude: [
-          '@nolebase/vitepress-plugin-inline-link-preview/client'
+          '@nolebase/vitepress-plugin-inline-link-preview/client',
+          'vitepress'
       ]
     },
 
