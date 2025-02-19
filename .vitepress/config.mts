@@ -62,7 +62,8 @@ export default defineConfig({
   rewrites: {
     'docs/cve/0day.md': 'posts/a7fc9217.md',
     'docs/prepare/server.md': 'posts/3edbef81.md',
-    'docs/prepare/init.md': 'posts/7ec143e2.md'
+    'docs/prepare/init.md': 'posts/7ec143e2.md',
+    'docs/prepare/network.md': 'posts/0315077c.md'
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -89,7 +90,8 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: '创建配置服务器', link: 'posts/3edbef81' },
-          { text: '服务器初始化', link: 'posts/7ec143e2' }
+          { text: '服务器初始化', link: 'posts/7ec143e2' },
+          { text: '业务网络架构', link: 'posts/0315077c' }
         ]
       }
     ],
