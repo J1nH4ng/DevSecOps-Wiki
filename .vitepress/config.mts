@@ -3,16 +3,41 @@ import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog';
+import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   vite: {
     plugins: [
       GitChangelog({
-        repoURL: () => 'https://github.com/J1nH4ng/DevSecOps-Wiki'
+        repoURL: () => 'https://github.com/J1nH4ng/DevSecOps-Wiki',
+        mapAuthors: [
+          {
+            name: 'K1NG',
+            username: 'J1nH4ng',
+            mapByEmailAliases: [
+                'j1nh4ng@icloud.com',
+                '2838080432@qq.com'
+            ],
+            avatar: 'https://avatars.githubusercontent.com/u/74055444',
+            links: 'https://github.com/J1nH4ng'
+          }
+        ]
       }),
       GitChangelogMarkdownSection(),
-    ]
+    ],
+
+    optimizeDeps: {
+      exclude: [
+          '@nolebase/vitepress-plugin-inline-link-preview/client'
+      ]
+    },
+
+    ssr: {
+      noExternal: [
+          '@nolebase/vitepress-plugin-inline-link-preview'
+      ]
+    }
   },
   lang: 'zh-CN',
   title: "DevSecOps Wiki",
@@ -28,7 +53,10 @@ export default defineConfig({
       light: 'rose-pine-dawn',
       dark: 'rose-pine-moon'
     },
-    math: true
+    math: true,
+    config(md) {
+      md.use(InlineLinkPreviewElementTransform);
+    }
   },
   rewrites: {
     'docs/cve/0day.md': 'posts/a7fc9217.md',

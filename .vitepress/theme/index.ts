@@ -12,6 +12,9 @@ import { DocAsideLogo } from '@theojs/lumen'
 import { Aside_Data } from '../data/asideData'
 import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client'
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
+import { NolebaseInlineLinkPreviewPlugin } from '@nolebase/vitepress-plugin-inline-link-preview/client'
+import '@nolebase/vitepress-plugin-inline-link-preview/client/style.css'
+import { InjectionKey } from '@nolebase/vitepress-plugin-inline-link-preview/client';
 
 export default {
   extends: DefaultTheme,
@@ -31,6 +34,8 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // ...
     app.use(NolebaseGitChangelogPlugin),
+    app.use(NolebaseInlineLinkPreviewPlugin),
+    app.provide(InjectionKey, {}),
     app.component('Home', HomeUnderline),
     umamiAnalytics({id: '', src: 'https://umami.4r3al.team'})
   }
