@@ -12,8 +12,8 @@ prev:
     text: 服务器的创建与配置
     link: posts/3edbef81
 next:
-    text:
-    link:
+    text: 业务网络架构
+    link: posts/0315077c
 ---
 
 # 服务器初始化
