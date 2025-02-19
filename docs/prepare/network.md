@@ -6,7 +6,7 @@ layout: doc
 head:
     - - meta
       - name: keywords
-        content: Linux
+        content: Network
 outline: deep
 prev:
     text: 服务器初始化
