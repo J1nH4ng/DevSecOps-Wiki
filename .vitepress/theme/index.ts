@@ -35,7 +35,16 @@ export default {
     // ...
     app.use(NolebaseGitChangelogPlugin),
     app.use(NolebaseInlineLinkPreviewPlugin),
-    app.provide(InjectionKey, {}),
+    app.provide(InjectionKey, {
+      location: {
+        'zh-CN': {
+          popup: {
+            loading: '加载中...',
+            loadingAriaLabel: '加载中',
+          }
+        }
+      }
+    }),
     app.component('Home', HomeUnderline),
     umamiAnalytics({id: '', src: 'https://umami.4r3al.team'})
   }
