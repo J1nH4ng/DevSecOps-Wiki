@@ -72,4 +72,4 @@ next:
 ## 特别说明
 
 > [!IMPORTANT]
-> 本文内容主要适用于 OpenEuler 操作系统，及基于 CentOS 二次发布的操作系统。
+> 本 Wiki 的内容主要适用于 OpenEuler 操作系统，及基于 CentOS 二次发布的操作系统，对于基于 Debain 的操作系统，具体命令请根据需要进行依赖替换等操作。
