@@ -8,8 +8,8 @@ hero:
   textsuffix: '知识文档'
   tagline: Stay hungry. Stay foolish.
   image:
-    src: images/TypeScript.png
-    alt: TypeScript
+    src: images/devsecops.png
+    alt: DevSecOps
   actions:
     - theme: brand
       text: 查看文档
