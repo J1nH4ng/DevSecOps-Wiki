@@ -57,6 +57,9 @@ export default defineConfig({
     math: true,
     config(md) {
       md.use(InlineLinkPreviewElementTransform);
+    },
+    image: {
+      lazyLoading: true
     }
   },
   rewrites: {
