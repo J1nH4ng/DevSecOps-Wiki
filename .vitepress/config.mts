@@ -6,6 +6,7 @@ import {
 import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
 import taskLists from "markdown-it-task-checkbox";
 import vitepressProtectPlugin from 'vitepress-protect-plugin';
+import footnote_plugin from 'markdown-it-footnote';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -72,6 +73,7 @@ export default defineConfig({
         ulClass: 'task-list',
         liClass: 'task-list-item',
       });
+      md.use(footnote_plugin);
     },
     image: {
       lazyLoading: true
