@@ -12,8 +12,8 @@ prev:
     text: 服务器初始化
     link: posts/7ec143e2
 next:
-    text:
-    link:
+    text: 业务上线检查事项
+    link: posts/55e3861d
 ---
 
 # 业务的网络结构模型介绍
