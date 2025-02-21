@@ -18,9 +18,18 @@ importers:
       '@nolebase/vitepress-plugin-inline-link-preview':
         specifier: ^2.14.0
         version: 2.14.0(typescript@5.7.3)(vitepress@1.6.3(@algolia/client-search@5.20.2)(less@4.2.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.2)(search-insights@2.17.3)(typescript@5.7.3))
+      markdown-it-footnote:
+        specifier: ^4.0.0
+        version: 4.0.0
+      markdown-it-task-checkbox:
+        specifier: ^1.0.6
+        version: 1.0.6
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.20.2)(less@4.2.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.2)(search-insights@2.17.3)(typescript@5.7.3)
+      vitepress-protect-plugin:
+        specifier: ^1.0.6
+        version: 1.0.6(vite@5.4.14(less@4.2.2))
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
@@ -978,8 +987,14 @@ packages:
     peerDependencies:
       markdown-it: '>= 9.0.0'
 
+  markdown-it-footnote@4.0.0:
+    resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
+
   markdown-it-mathjax3@4.3.2:
     resolution: {integrity: sha512-TX3GW5NjmupgFtMJGRauioMbbkGsOXAAt1DZ/rzzYmTHqzkO1rNAdiMD4NiruurToPApn2kYy76x02QN26qr2w==}
+
+  markdown-it-task-checkbox@1.0.6:
+    resolution: {integrity: sha512-7pxkHuvqTOu3iwVGmDPeYjQg+AIS9VQxzyLP9JCg9lBjgPAJXGEkChK6A2iFuj3tS0GV3HG2u5AMNhcQqwxpJw==}
 
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
@@ -1404,6 +1419,11 @@ packages:
         optional: true
       terser:
         optional: true
+
+  vitepress-protect-plugin@1.0.6:
+    resolution: {integrity: sha512-4gO5NYNrAaD99+/5Qp/QPURTZC2MZ6UMl/gnxfBAIRasxw6r/mdjcluUNLxEFT8WUMX19KgGu4SSLFcKwfeBtQ==}
+    peerDependencies:
+      vite: ^2.0.0 || ^3.0.0 || ^4.0.0
 
   vitepress@1.6.3:
     resolution: {integrity: sha512-fCkfdOk8yRZT8GD9BFqusW3+GggWYZ/rYncOfmgcDtP3ualNHCAg+Robxp2/6xfH1WwPHtGpPwv7mbA3qomtBw==}
@@ -2468,6 +2488,8 @@ snapshots:
     dependencies:
       markdown-it: 14.1.0
 
+  markdown-it-footnote@4.0.0: {}
+
   markdown-it-mathjax3@4.3.2:
     dependencies:
       juice: 8.1.0
@@ -2475,6 +2497,8 @@ snapshots:
     transitivePeerDependencies:
       - encoding
     optional: true
+
+  markdown-it-task-checkbox@1.0.6: {}
 
   markdown-it@14.1.0:
     dependencies:
@@ -2889,6 +2913,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
       less: 4.2.2
+
+  vitepress-protect-plugin@1.0.6(vite@5.4.14(less@4.2.2)):
+    dependencies:
+      vite: 5.4.14(less@4.2.2)
 
   vitepress@1.6.3(@algolia/client-search@5.20.2)(less@4.2.2)(markdown-it-mathjax3@4.3.2)(postcss@8.5.2)(search-insights@2.17.3)(typescript@5.7.3):
     dependencies:
