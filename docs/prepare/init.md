@@ -108,7 +108,7 @@ passwd
 ```
 # 取消如下注释内容并修改 [!code --]
 #PermitRootLogin yes [!code ++]
-PermitRootLogin no   
+PermitRootLogin no
 ```
 
 ## 软件安装
