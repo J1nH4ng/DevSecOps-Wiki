@@ -106,9 +106,9 @@ passwd
 修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
 ```
-# 取消如下注释内容并修改   [!code --]
+# 取消如下注释内容并修改 [!code --]
 #PermitRootLogin yes [!code ++]
-PermitRootLogin no
+PermitRootLogin no   
 ```
 
 ## 软件安装
