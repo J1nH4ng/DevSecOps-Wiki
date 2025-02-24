@@ -30,9 +30,9 @@ next:
 - [x] 服务器架构检查 <Badge type="warning" text="需要留意" />
   - [x] ARM 64 或 AMD 64
 - [x] 各服务器之间的横向 SSH 是否联通 <Badge type="danger" text="后续影响" />
-- [ ] 服务器密码强弱性检查 <Badge type="danger" text="特别注意" />
+- [x] 服务器密码强弱性检查 <Badge type="danger" text="特别注意" />
   - [x] 弱密码
-  - [ ] 禁止 root 用户远程登录
+  - [x] 禁止 root 用户远程登录
 - [ ] 防火墙开放状态
 - [ ] 物理磁盘部分
   - [ ] 虚拟机是否挂载数据盘
