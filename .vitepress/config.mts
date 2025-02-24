@@ -22,7 +22,7 @@ export default defineConfig({
                 'j1nh4ng@icloud.com',
                 '2838080432@qq.com'
             ],
-            avatar: 'https://avatars.githubusercontent.com/u/74055444',
+            avatar: 'https://q1.qlogo.cn/g?b=qq&nk=2838080432&s=640',
             links: 'https://github.com/J1nH4ng'
           }
         ]
@@ -51,6 +51,9 @@ export default defineConfig({
   lang: 'zh-CN',
   title: "DevSecOps Wiki",
   description: "DevSecOps Wiki",
+  head: [
+    ['link', { rel: 'icon', href: 'https://q1.qlogo.cn/g?b=qq&nk=2838080432&s=100' }],
+  ],
   metaChunk: true,
   cleanUrls: true,
   sitemap: {
@@ -115,6 +118,36 @@ export default defineConfig({
           { text: '业务网络架构', link: 'posts/0315077c' },
           { text: '业务上线检查事项', link: 'posts/55e3861d.md'}
         ]
+      },
+      {
+        text: '代理服务器部分',
+        collapsed: true,
+        items: []
+      },
+      {
+        text: '应用服务器部分',
+        collapsed: true,
+        items: []
+      },
+      {
+        text: '数据库服务器部分',
+        collapsed: true,
+        items: []
+      },
+      {
+        text: '中间件服务器部分',
+        collapsed: true,
+        items: []
+      },
+      {
+        text: 'CI & CD 服务器部分',
+        collapsed: true,
+        items: []
+      },
+      {
+        text: '系统监控服务器部分',
+        collapsed: true,
+        items: []
       }
     ],
 
@@ -141,6 +174,10 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/J1nH4ng/DevSecOps-Wiki/edit/main/docs/:path'
-    }
+    },
+
+    sideTitle: false,
+
+    externalLinkIcon: true,
   }
 })
