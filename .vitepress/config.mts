@@ -65,6 +65,9 @@ export default defineConfig({
       light: 'rose-pine-dawn',
       dark: 'rose-pine-moon'
     },
+    image: {
+      lazyLoading: true
+    },
     math: true,
     config(md) {
       md.use(InlineLinkPreviewElementTransform);
@@ -78,9 +81,6 @@ export default defineConfig({
       });
       md.use(footnote_plugin);
     },
-    image: {
-      lazyLoading: true
-    }
   },
   rewrites: {
     'docs/cve/0day.md': 'posts/a7fc9217.md',
