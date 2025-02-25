@@ -33,18 +33,21 @@ next:
 - [x] 服务器密码强弱性检查 <Badge type="danger" text="特别注意" />
   - [x] 弱密码
   - [x] 禁止 root 用户远程登录
-  - [ ] 禁止 su 命令切换至 root 用户
-- [ ] 防火墙开放状态
+  - [x] 禁止 su 命令切换至 root 用户
+- [x] 修改镜像源
+- [x] 安装依赖
 - [ ] 物理磁盘部分
   - [ ] 虚拟机是否挂载数据盘
   - [ ] 测试磁盘是否为 SSD <Badge type="danger" text="后续影响" />
   - [ ] 配置 LVM
-- [ ] SELinux 配置
-- [ ] 修改镜像源
 - [ ] 升级 OpenSSL
 - [ ] 升级 OpenSSH
   - [ ] 9.8p1 版本以上 
   - [ ] 禁用特定算法，修复 [CVE-2002-20001](a7fc9217) 漏洞
+- [ ] 配置 SSH 安全
+- [ ] 配置 Fail2ban
+- [ ] 防火墙开放状态
+- [ ] SELinux 配置
 - [ ] 配置文件最大打开数
 - [ ] 调整内核参数
 
@@ -106,23 +109,60 @@ passwd
 
 修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
-```
-# 取消如下注释内容并修改 [!code --]
-#PermitRootLogin yes [!code ++]
+```diff
+// [!code --]
+# PermitRootLogin yes
+// [!code ++]
 PermitRootLogin no
 ```
 
-## 软件安装
+如果需要禁止普通用户使用 `su -` 命令来切换至 root 用户，还需要配置如下内容：
+
+```bash
+vim /etc/pam.d/su
+```
+
+修改如下内容：
+
+```diff
+// [!code --]
+auth          required        pam_wheel.so use_uid
+// 注释该内容即可
+// [!code ++]
+# auth          required        pam_wheel.so use_uid
+```
+
+同理，可以进行反向运用处理无法切换至 root 用户的问题。
+
+## 软件安装配置
 
 软件安装的主要是为了方便后续的运维操作，以及确保编译安装业务软件所需求的依赖存在等。
 
-### 安装常用软件
+软件配置主要为配置终端和 vim 的 rc 文件，确保后续不会因为复制粘贴等问题影响缩进从而导致的错误，尤其是针对 yaml 这种强依赖缩进的文件格式。
+
+### 修改镜像源
+
+对于 OpenEuler 和 OpenKylin 系统来说，镜像源默认为国内源地址，不需要进行修改，对于旧的 CentOS 系统来说，镜像源已经不在维护，无需修改。
+
+### 安装常用软件  <Badge type="tip" text="持续更新" />
 
 对于常用地依赖软件，使用 `yum` 来进行安装，主要安装的内容如下：
 
-```bash
-yum install -y vim lrzsz
-```
+1. 更新现存的文件依赖
+  ```bash
+  yum update -y
+  ```
+2. 安装常用地运维软件
+  ```bash
+  yum install -y gcc gcc-c++ make \
+      net-tools kernel-devel \
+      telnet ntpdate vim wget lrzsz \
+      htop lsof iotop
+  ```
+3. 安装开发工具
+  ```bash
+  yum groupinstall -y 'Development tools'
+  ```
 
 ## 安全加固
 
