@@ -164,6 +164,8 @@ auth          required        pam_wheel.so use_uid
   yum groupinstall -y 'Development tools'
   ```
 
+## LVM 磁盘挂载
+
 ## 安全加固
 
 安全加固的主要目的是为了保证服务器的安全性，具体的操作内容有以下几点：
