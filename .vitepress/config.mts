@@ -323,7 +323,8 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: 'Linux 常用命令备忘录', link: '' },
-          { text: 'Linux 常见错误解决方法', link: '' }
+          { text: 'Linux 常见错误解决方法', link: '' },
+          { text: 'Linux 网络错误排查方法', link: '' }
         ]
       }
     ],
