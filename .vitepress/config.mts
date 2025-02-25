@@ -120,6 +120,11 @@ export default defineConfig({
         ]
       },
       {
+        text: '基础设施部分',
+        collapsed: true,
+        items: []
+      },
+      {
         text: '代理服务器部分',
         collapsed: true,
         items: []
