@@ -9,11 +9,11 @@ head:
         content: Linux
 outline: deep
 prev:
-    text: 服务器的创建与配置
-    link: posts/3edbef81
-next:
     text: 业务网络架构
     link: posts/0315077c
+next:
+    text:
+    link:
 ---
 
 # 业务上线检查事项列表
