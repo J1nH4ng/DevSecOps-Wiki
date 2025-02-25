@@ -74,4 +74,4 @@ next:
 > [!IMPORTANT]
 > 本 Wiki 的内容主要适用于 OpenEuler 操作系统，及基于 CentOS 二次发布的操作系统，对于基于 Debain 的操作系统，具体命令请根据需要进行依赖替换等操作。
 
-服务器操作系统安装完成后，可以使用 Xshell 等工具进行连接，以便于接下来的操作。
+服务器操作系统安装完成后，可以使用 [Xshell](https://www.xshell.com/zh/xshell/) 等工具进行连接，以便于接下来的操作。
