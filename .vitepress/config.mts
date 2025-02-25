@@ -87,7 +87,8 @@ export default defineConfig({
     'docs/prepare/server.md': 'posts/3edbef81.md',
     'docs/prepare/init.md': 'posts/7ec143e2.md',
     'docs/prepare/network.md': 'posts/0315077c.md',
-    'docs/prepare/checklist.md': 'posts/55e3861d.md'
+    'docs/prepare/checklist.md': 'posts/55e3861d.md',
+    'docs/infrastructure/gitlab.md': 'posts/894a942b.md'
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -122,7 +123,9 @@ export default defineConfig({
       {
         text: '基础设施部分',
         collapsed: true,
-        items: []
+        items: [
+          { text: '代码仓库搭建', link: 'posts/894a942b' }
+        ]
       },
       {
         text: '代理服务器部分',
