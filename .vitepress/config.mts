@@ -156,6 +156,11 @@ export default defineConfig({
         text: '系统监控服务器部分',
         collapsed: true,
         items: []
+      },
+      {
+        text: '容器化部分',
+        collapsed: true,
+        items: []
       }
     ],
 
