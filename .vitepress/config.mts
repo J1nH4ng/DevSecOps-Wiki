@@ -107,7 +107,10 @@ export default defineConfig({
         text: 'CVE 列表',
         collapsed: true,
         items: [
-          { text: '高危漏洞', link: 'posts/a7fc9217' }
+          { text: '高危漏洞', link: 'posts/a7fc9217' },
+          { text: '中危漏洞', link: '' },
+          { text: '低危漏洞', link: '' },
+          { text: '无风险漏洞', link: '' }
         ]
       },
       {
@@ -124,43 +127,204 @@ export default defineConfig({
         text: '基础设施部分',
         collapsed: true,
         items: [
-          { text: '代码仓库搭建', link: 'posts/894a942b' }
+          { text: '单点登录搭建', link: '' },
+          { text: '代码仓库搭建', link: 'posts/894a942b' },
+          { text: '容器仓库搭建', link: '' },
+          { text: '代码质量检查', link: '' },
+          { text: '邮件服务搭建', link: '' },
+          { text: '系统镜像仓库搭建', link: '' },
+          { text: '前端镜像仓库搭建', link: '' },
+          { text: '后端镜像仓库搭建', link: '' },
+          { text: '项目管理系统搭建', link: '' },
+          { text: '知识文档仓库搭建', link: '' },
+          { text: 'NTP 服务器搭建', link: '' },
+          { text: 'DNS 服务器搭建', link: '' },
+          { text: 'NFS 服务器搭建', link: '' }
         ]
       },
       {
         text: '代理服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          { text: '负载均衡服务器（LVS）', link: '' },
+          { text: '反向代理服务器（Nginx）', link: '' },
+          { text: '反向代理服务器（HAproxy）', link: '' },
+          { text: '正向代理服务器（Nginx）', link: '' },
+          { text: '正向代理服务器（Squid）', link: '' }
+        ]
       },
       {
         text: '应用服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          { text: '前端服务器', link: '' },
+          { text: '后端服务器', link: '' }
+        ]
       },
       {
         text: '数据库服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          {
+            text: 'MySQL 数据库部分',
+            collapsed: true,
+            items: [
+              { text: 'MySQL 单点服务搭建', link: '' },
+              { text: 'MySQL 主主集群搭建', link: '' },
+              { text: 'MySQL MGR 集群搭建', link: '' },
+              { text: 'MySQL 读写分离集群搭建', link: '' },
+              { text: 'MySQL 性能和压力测试', link: '' },
+              { text: 'MySQL 数据备份与恢复', link: '' },
+            ]
+          }
+        ]
       },
       {
         text: '中间件服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          {
+            text: 'Redis 缓存部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'MinIO 对象存储部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'NacOS 配置中心部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'RabbitMQ 消息队列部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'ElasticSearch 搜索引擎部分',
+            collapsed: true,
+            items: []
+          }
+        ]
       },
       {
         text: 'CI & CD 服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          {
+            text: 'Jenkins 部分',
+            collapsed: true,
+            items: [
+              { text: 'Jenkins 的安装配置', link: '' },
+              { text: 'Jenkins 连接 K8S', link: '' },
+              { text: 'Jenkins 脚本发布配置', link: '' },
+              { text: 'Jenkins Pipeline 发布配置', link: '' }
+            ]
+          },
+          {
+            text: 'Github Actions 部分',
+            collapsed: true,
+            items: [
+              { text: '自建 Runtime', link: '' },
+              { text: 'Actions 发布配置', link: '' }
+            ]
+          },
+          {
+            text: 'GitLab CI/CD 部分',
+            collapsed: true,
+            items: []
+          }
+        ]
       },
       {
         text: '系统监控服务器部分',
         collapsed: true,
-        items: []
+        items: [
+          {
+            text: 'Zabbix 监控部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Prometheus 监控部分',
+            collapsed: true,
+            items: []
+          }
+        ]
+      },
+      {
+        text: '日志监控部分',
+        collapsed: true,
+        items: [
+          {
+            text: 'ELK 日志链路搭建',
+            link: ''
+          },
+          {
+            text: 'ELK 结合 Kafka 拓展',
+            link: ''
+          }
+        ]
       },
       {
         text: '容器化部分',
         collapsed: true,
-        items: []
+        items: [
+          {
+            text: 'Docker 部分',
+            collapsed: true,
+            items: [
+              { text: 'Docker 镜像代理', link: '' },
+              { text: 'Docker 的安装和配置', link: '' },
+              { text: 'Docker 网络配置详解', link: '' },
+              { text: 'Docker 占用空间清理', link: '' },
+              { text: 'Docker 镜像制作', link: '' },
+              { text: 'Docker 镜像瘦身', link: '' }
+            ]
+          },
+          {
+            text: 'Kubernetes 部分',
+            collapsed: true,
+            items: []
+          }
+        ]
+      },
+      {
+        text: '自动化运维部分',
+        collapsed: true,
+        items: [
+          {
+            text: 'Ansible 部分',
+            collapsed: true,
+            items: []
+          },
+          {
+            text: 'Terraform 部分',
+            collapsed: true,
+            items: []
+          }
+        ]
+      },
+      {
+        text: '经验总结部分',
+        collapsed: true,
+        items: [
+          { text: '需考证书列表', link: '' },
+          { text: '成长路线图介绍', link: '' },
+          { text: '面试题目以及经验分享', link: '' },
+          { text: '经验总结与融入新环境', link: '' }
+        ]
+      },
+      {
+        text: '细碎知识点部分',
+        collapsed: true,
+        items: [
+          { text: 'Linux 常用命令备忘录', link: '' },
+          { text: 'Linux 常见错误解决方法', link: '' }
+        ]
       }
     ],
 
