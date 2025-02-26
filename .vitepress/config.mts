@@ -102,6 +102,12 @@ export default defineConfig({
       }
     ],
 
+    outline: {
+      level: 'deep',
+      label: '文章目录'
+    },
+
+
     sidebar: [
       {
         text: 'CVE 列表',
