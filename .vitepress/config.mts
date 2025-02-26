@@ -175,6 +175,7 @@ export default defineConfig({
               { text: 'MySQL 读写分离集群搭建', link: '' },
               { text: 'MySQL 性能和压力测试', link: '' },
               { text: 'MySQL 数据备份与恢复', link: '' },
+              { text: 'MySQL 性能调优配置', link: '' }
             ]
           }
         ]
