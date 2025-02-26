@@ -6,8 +6,10 @@ layout: doc
 head:
     - - meta
       - name: keywords
-        content: Linux
+        content: Linux, CVE
 outline: deep
 prev: false
 next: false
 ---
+
+# 高危漏洞解决手册
