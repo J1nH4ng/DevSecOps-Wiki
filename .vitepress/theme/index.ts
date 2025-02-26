@@ -15,6 +15,11 @@ import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 import { NolebaseInlineLinkPreviewPlugin } from '@nolebase/vitepress-plugin-inline-link-preview/client'
 import '@nolebase/vitepress-plugin-inline-link-preview/client/style.css'
 import { InjectionKey } from '@nolebase/vitepress-plugin-inline-link-preview/client';
+import {
+  NolebaseEnhancedReadabilitiesMenu,
+  NolebaseEnhancedReadabilitiesScreenMenu,
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client';
+import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css';
 
 export default {
   extends: DefaultTheme,
@@ -28,7 +33,9 @@ export default {
         buttonText: '分享此页面',
         copiedIcon: 'mdi:thumbs-up',
         copiedText: '分享链接已复制！'
-      })
+      }),
+      'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu),
+      'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu),
     })
   },
   enhanceApp({ app, router, siteData }) {
