@@ -59,7 +59,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: 'https://q1.qlogo.cn/g?b=qq&nk=2838080432&s=100' }],
   ],
   metaChunk: true,
-  cleanUrls: true,
+  cleanUrls: false,
   sitemap: {
     hostname: 'https://wiki.4r3al.team'
   },
