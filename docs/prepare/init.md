@@ -255,11 +255,26 @@ $$ \text{Disks} \Rightarrow \text{Partitions} \Rightarrow \text{PV} \Rightarrow 
 - 修复系统漏洞
 - 修改默认配置
 
+### SSH 版本升级
+
 ### SSH 安全加固
 
-出于安全性的进一步考虑，还需要配置禁止 root 用户的远程登录：
+升级完成之后，SSH 会将服务端口变为默认的 22 端口，需要修改为非常用端口号，修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
-修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
+```diff
+// [!code --]
+Port 22
+// [!code ++]
+Port 22022
+```
+
+修改完成后，重启 SSH 服务生效：
+
+```bash
+systemctl restart sshd
+```
+
+出于安全性的进一步考虑，还需要配置禁止 root 用户的远程登录，修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
 ```diff
 // [!code --]
