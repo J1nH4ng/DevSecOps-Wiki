@@ -233,6 +233,20 @@ hdparm -Tt /dev/${disk-name}
 
 可以查看到磁盘读取速度在每秒 1800 MB 左右，理论上 $\text{PCIE 4.0} \times 4$ 的 SSD 读取速度在 7000 MB/sec，同时根据磁盘命名也可以推测出来，nvme 开头的一般都为 SSD。
 
+### 新增与拓展 LVM 磁盘
+
+LVM（Login Volume Manger），是 Linux 内核提供的一种逻辑卷管理功能，有内核驱动和应用层工具组成，它是在硬盘的分区基础上，创建了一个逻辑层，可以非常灵活且方便的管理存储设备。
+
+LVM 利用 Linux 内核的 device-manager 功能来实现存储系统的虚拟化（系统分区独立于底层硬件）。通过 LVM，可以实现存储空间的抽象化并在上面建立虚拟分区（virtual partitions），可以更简便地扩大和缩小分区，可以增删分区时无需担心某个硬盘上没有足够的连续空间，避免为正在使用的磁盘重新分区的麻烦、为调整分区分区而不得不移动其他分区的不便，相比于传统的分区系统可以更灵活地管理磁盘。
+
+创建一个 LVM 磁盘的基本逻辑如下：
+
+$$ \text{Disks} \Rightarrow \text{Partitions} \Rightarrow \text{PV} \Rightarrow \text{VG} \Rightarrow \text{LV} \Rightarrow \text{File Systems} $$
+
+#### 新增 LVM 磁盘
+
+#### 拓展 LVM 磁盘
+
 ## 安全加固
 
 安全加固的主要目的是为了保证服务器的安全性，具体的操作内容有以下几点：
