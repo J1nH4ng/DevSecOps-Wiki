@@ -25,7 +25,9 @@ export const Footer_Data: FooterData ={
             title: 'Github Source',
             icon: 'bx:bxl-github',
             links: [
-                { name: 'Keep', link: 'https://github.com/keephq/keep', icon: 'solar:github-alt'}
+                { name: 'Keep', link: 'https://github.com/keephq/keep', icon: 'solar:github-alt'},
+                { name: '脚本分享', link: 'https://github.com/J1nH4ng/SCSL', icon: 'solar:github-alt' },
+                { name: '配置文件分享', link: 'https://github.com/14Bytes/dotConfigFiles4Share', icon: 'solar:github-alt'}
             ]
         }
     ]
