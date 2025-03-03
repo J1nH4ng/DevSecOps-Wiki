@@ -44,7 +44,10 @@ next:
   - [ ] 9.8p1 版本以上 
   - [ ] 禁用特定算法，修复 [CVE-2002-20001](a7fc9217) 漏洞
 - [ ] 配置 SSH 安全
+  - [x] 修改 SSH 连接协议
   - [x] 修改默认的 22 端口
+  - [x] 结束空闲会话
+  - [x] 显示最后一次登录
   - [x] 禁止 root 用户远程登录
   - [x] 禁止 su 命令切换至 root 用户
   - [ ] 配置 Fail2ban
@@ -123,20 +126,20 @@ passwd
 对于常用地依赖软件，使用 `yum` 来进行安装，主要安装的内容如下：
 
 1. 更新现存的文件依赖
-  ```bash
-  yum update -y
-  ```
+    ```bash
+    yum update -y
+    ```
 2. 安装常用地运维软件
-  ```bash
-  yum install -y gcc gcc-c++ make \
-      net-tools kernel-devel \
-      telnet ntpdate vim wget lrzsz \
-      htop lsof iotop hdparm
-  ```
+    ```bash
+    yum install -y gcc gcc-c++ make \
+        net-tools kernel-devel \
+        telnet ntpdate vim wget lrzsz \
+        htop lsof iotop hdparm
+    ```
 3. 安装开发工具
-  ```bash
-  yum groupinstall -y 'Development tools'
-  ```
+    ```bash
+    yum groupinstall -y 'Development tools'
+    ```
 
 ## 时钟同步检查
 
@@ -259,7 +262,23 @@ $$ \text{Disks} \Rightarrow \text{Partitions} \Rightarrow \text{PV} \Rightarrow 
 
 ### SSH 安全加固
 
-升级完成之后，SSH 会将服务端口变为默认的 22 端口，需要修改为非常用端口号，修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
+#### 修改连接协议
+
+SSHv1 协议是对 SSH 协议的不安全实现，为了系统的安全，需要修改为仅接受 SSHv2 连接。
+
+> [!TIP] 备注：
+> RedHat 和 CentOS 在 7.4 版本之后默认使用了 SSHv2，但是明确指定仍然是比较好的。
+
+修改 `/etc/ssh/sshd_config` 文件，修改如下内容：
+
+```diff
+// [!code ++]
+Protocol 2
+```
+
+#### 修改默认端口
+
+SSH 服务的默认端口为 22 端口，需要修改为非常用端口号，修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
 ```diff
 // [!code --]
@@ -268,11 +287,36 @@ Port 22
 Port 22022
 ```
 
-修改完成后，重启 SSH 服务生效：
+#### 显示最后一次登录
+
+这个是默认启用的，可以通过查看如下配置进行验证是否开启：
 
 ```bash
-systemctl restart sshd
+PrintLastLog yes
 ```
+
+#### 结束空闲会话
+
+当用户一段时间不进行操作后，应该主动结束空闲会话，用以防止其他用户在无人看管的情况下执行非法的指令，修改 `/etc/ssh/sshd_config` 文件的如下内容：
+
+```diff
+// 单位为 s
+// [!code ++]
+ClientAliveInterval 900
+// [!code ++]
+ClientAliveCountMax 0
+```
+
+#### 禁用空密码
+
+确保每一个用户连接服务器都需要密码验证，修改 `/etc/ssh/sshd_config` 文件的如下内容：
+
+```diff
+// [!code ++]
+PermitEmptyPasswords no
+```
+
+#### 禁止 Root 登录
 
 出于安全性的进一步考虑，还需要配置禁止 root 用户的远程登录，修改 `/etc/ssh/sshd_config` 文件，修改如下内容即可：
 
@@ -282,6 +326,14 @@ systemctl restart sshd
 // [!code ++]
 PermitRootLogin no
 ```
+
+以上内容修改完成后，重启 SSH 服务生效：
+
+```bash
+systemctl restart sshd
+```
+
+#### 禁止切换至 Root
 
 如果需要禁止普通用户使用 `su -` 命令来切换至 root 用户，还需要配置如下内容：
 
@@ -299,7 +351,37 @@ auth          required        pam_wheel.so use_uid
 # auth          required        pam_wheel.so use_uid
 ```
 
-同理，可以进行反向运用处理无法切换至 root 用户的问题。
+这个配置不需要重启生效，同理，可以进行反向运用处理无法切换至 root 用户的问题。
+
+#### 配置 Fail2Ban
+
+### 防火墙配置
+
+#### 宽松设置
+
+对于同一个域内的服务器来说，由于外部的 WAF 设备或堡垒机对于登录来源进行了严格的限制和校验，所以域内的服务器上的防火墙为了业务的性能和相互直接之间通信的简便性考量可以进行关闭处理，使用以下命令将防火墙的关闭：
+
+```bash
+# 关闭防火墙
+systemctl stop firewalld
+
+# 关闭开机自启动
+systemctl disable firewalld
+```
+
+#### 严格设置
+
+处于业务的安全性考虑，可以针对特定服务的端口对特定 IP 进行防火墙开放处理，对于防火墙的域，首先需要查看当前网卡所在的域，然后进行配置，对于不同的域，防火墙的默认策略也是不一样的，具体介绍如下：
+
+##### 域介绍
+
+- trusted：
+- home、work、internal：
+- public：
+- dmz：
+- external：
+- block：
+- drop：
 
 ## 性能优化
 
