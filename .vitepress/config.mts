@@ -320,6 +320,23 @@ export default defineConfig({
         ]
       },
       {
+        text: '压力测试部分',
+        collapsed: true,
+        items: [
+          { text: '压力测试性能指标', collapsed: true, link: '' }
+        ]
+      },
+      {
+        text: '业务迁移部分',
+        collapsed: true,
+        items: [
+          {
+            text: '注意事项',
+            link: ''
+          }
+        ]
+      },
+      {
         text: '经验总结部分',
         collapsed: true,
         items: [
