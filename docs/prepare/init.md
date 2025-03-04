@@ -51,8 +51,8 @@ next:
   - [x] 禁止 root 用户远程登录
   - [x] 禁止 su 命令切换至 root 用户
   - [ ] 配置 Fail2ban
-- [ ] 防火墙开放状态
-- [ ] SELinux 配置
+- [x] 防火墙开放状态
+- [x] SELinux 配置
 - [ ] 配置文件最大打开数
 - [ ] 调整内核参数
 
@@ -375,13 +375,108 @@ systemctl disable firewalld
 
 ##### 域介绍
 
-- trusted：
-- home、work、internal：
-- public：
-- dmz：
-- external：
-- block：
-- drop：
+- trusted：接受所有的连接。
+- home、work、internal：接受大部分连接
+- public：只接受常见和最安全的连接
+- dmz：表示隔离区，多用于可公开访问，位于机构的外部网络，对内网访问受限的计算机
+- external：用于外部网络，会开启伪装（你的私网地址会被映射到一个外网 IP 地址并被隐藏）
+- block：仅接受在本系统中初始化的网络连接
+- drop：接受的所有网络包都被丢弃
+
+##### 配置文件
+
+系统默认的规则目录位于 `/usr/lib/firewalld/zones`，可以通过此目录查看每个域的默认策略，但是不建议直接修改该文件，建议修改自定义的规则目录 `/etc/firewalld/zones`，当需要添加和删除规则时，系统会自动将修改的配置保存至此目录，优先级高于默认规则。
+
+##### 规则配置
+
+修改防护墙配置之前首先需要明确当前网卡的所在域，使用如下命令进行查看：
+
+```bash
+firewall-cmd --get-active-zones
+```
+
+运行的结果如下：
+
+```bash
+public
+  interfaces: ens192
+```
+可以查看到当前系统网卡 `ens192` 的所在域为 `public`。如果想修改该网卡的所在域，可以执行如下命令进行修改：
+
+```bash
+firewall-cmd --change-interface=ens192 --zone=dmz
+```
+
+在默认情况下，网卡所在域为 `public`，对于该策略的更改，可以修改 `/etc/firewalld/zones/public.xml` 文件，也可以执行如下的命令进行常用的操作，<u>所有的操作完成后，需要重载 firewalld 使新规则生效</u>，对于其他域的修改，只需要将 `public` 替换为所需要的名称即可。
+
+```bash
+# 运行所有网络使用 TCP 协议访问 8080 端口
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --reload
+
+# 删除该规则
+firewall-cmd --zone=public --remove-port=8080/tcp --permanent
+firewall-cmd --reload
+
+# 指定 IP 访问
+firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=172.16.1.1 port protocol=tcp port=8080 accept'
+firewall-cmd --reload
+
+# 删除该规则
+firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=172.16.1.1 port protocol=tcp port=8080 accept'
+firewall-cmd --reload
+
+# 指定 IP 段访问
+firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=172.16.1.0/24 port protocol=tcp port=8080 accept'
+firewall-cmd --reload
+
+# 删除该规则
+firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=172.16.1.0/24 port protocol=tcp port=8080 accept'
+firewall-cmd --reload
+```
+
+### 关闭 SELinux
+
+SELinux 是一个安全子系统，但是在很多情况下，为了避免以后某些软件由于 SELinux 问题从而无法配置，所以关闭 SELinux 是有必要的，修改如下配置内容即可：
+
+```bash
+vim /etc/selinux/config
+```
+
+修改如下配置：
+
+```diff
+// [!code --]
+SELINUX=enforcing
+// [!code ++]
+SELINUX=disabled
+```
+
+修改完成后，重启服务器使其生效，为了避免无法正常启动，在保存退出后需要在根目录下创建一个隐藏文件，再重启服务器：
+
+> [!TIP] 特别说明：
+> 在根目录下创建 `.autorelabel` 文件后，系统会在下次启动时检测到该文件，并自动重新标记所有文件的安全上下文，确保它们与当前 SELinux 配置一致。这个过程完成后，文件会被自动删除。
+
+```bash
+touch /.autorelabel
+
+reboot
+```
+
+重启后使用如下命令进行查看状态：
+
+```bash
+getenforce
+```
+
+如果暂时无法重启服务器，可以使用如下命令临时关闭，等待下次重启即可：
+
+```bash
+setenforce 0
+```
+
+> [!IMPORTANT] 特别注意：
+> 这里的 0 代表的是 `permissive` 模式，并不是 `disabled` 模式，从 `enforcing` 和 `permissive` 模式转换为 `disabled` 模式需要重启服务器才能生效。
 
 ## 性能优化
 
