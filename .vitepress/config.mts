@@ -92,7 +92,8 @@ export default defineConfig({
     'docs/prepare/init.md': 'posts/7ec143e2.md',
     'docs/prepare/network.md': 'posts/0315077c.md',
     'docs/prepare/checklist.md': 'posts/55e3861d.md',
-    'docs/infrastructure/gitlab.md': 'posts/894a942b.md'
+    'docs/infrastructure/gitlab.md': 'posts/894a942b.md',
+    'docs/proxy/reverse-proxy-nginx.md': 'posts/2d22a002.md',
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -157,7 +158,7 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: '负载均衡服务器（LVS）', link: '' },
-          { text: '反向代理服务器（Nginx）', link: '' },
+          { text: '反向代理服务器（Nginx）', link: 'posts/2d22a002.md' },
           { text: '反向代理服务器（HAproxy）', link: '' },
           { text: '正向代理服务器（Nginx）', link: '' },
           { text: '正向代理服务器（Squid）', link: '' }
