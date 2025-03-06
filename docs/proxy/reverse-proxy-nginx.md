@@ -223,15 +223,17 @@ stream {
 Nginx 本身并不直接处理 SQL 查询，以下的方式只是减少攻击面，完整的防护需要配合 WAF 和在应用程序层面进行真正地实现，这里不介绍 Nginx 集成 WAF 的配置，只配置通过 Nginx 本身的功能来进行攻击面的减少：
 
 ```nginx
-set $block0;
-if ($request_method !~ ^(GET|POST)$) { set $block1; }
-
-if ($query_string~* "union.*select.*from") { set $block1; }
-
-if ($args~* "<script.*>") { set $block1; }
-
-location / {
-  if ($block = 1) { return 444; }
+server {
+  set $block0;
+  if ($request_method !~ ^(GET|POST)$) { set $block1; }
+  
+  if ($query_string~* "union.*select.*from") { set $block1; }
+  
+  if ($args~* "<script.*>") { set $block1; }
+  
+  location / {
+    if ($block = 1) { return 444; }
+  }
 }
 ```
 
