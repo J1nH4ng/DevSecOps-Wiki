@@ -206,6 +206,33 @@ stream {
 
 #### 配置跨域
 
+#### 配置 HTTP/2 连接
+
+```nginx
+http {
+  # 开启 HTTP/2
+  listen 443 ssl http2;
+  
+  # 优化连接复用
+  keepalive_timeout 300s;
+  keepalive_requests 10000;
+  
+  # 头部压缩优化
+  gzip on;
+  gzip_min_length 1k;
+  gzip_comp_level 3;
+  gzip_types text/plain application/json;
+  
+  # 调整缓冲区 Header
+  http2_max_filed_size 16k;
+  http2_max_header_size 64k;
+  
+  # 动态调整窗口大小
+  http2_body_preread_size 128k;
+  http2_streams_index_size 1024;
+}
+```
+
 #### 配置高性能缓存
 
 #### 配置动态黑名单
