@@ -9,8 +9,8 @@ export const Footer_Data: FooterData ={
             icon: 'bx:link-external',
             color: 'rgba(255, 87, 51, 1)',
             links: [
-                {name: 'Github', link: 'https://github.com/J1nH4ng', icon: 'solar:github-alt'},
-                {name: 'LeetCode', link: 'https://leetcode.cn', icon: 'https://leetcode.cn/favicon.ico'}
+                {name: 'Github', link: 'https://github.com/J1nH4ng' },
+                {name: 'LeetCode', link: 'https://leetcode.cn' }
             ]
         },
         {
@@ -18,17 +18,25 @@ export const Footer_Data: FooterData ={
             icon: 'bx:paper-plane',
             color: 'rgba(255, 87, 51, 1)',
             links: [
-                { name: 'Shaw\'s Book', link: 'https://xiaoshebro.github.io/', icon: 'https://xiaoshebro.github.io/logo.svg'}
+                { name: 'Shaw\'s Book', link: 'https://xiaoshebro.github.io/' }
             ]
         },
         {
             title: 'Github Source',
             icon: 'bx:bxl-github',
             links: [
-                { name: 'Keep', link: 'https://github.com/keephq/keep', icon: 'solar:github-alt'},
-                { name: '脚本分享', link: 'https://github.com/J1nH4ng/SCSL', icon: 'solar:github-alt' },
-                { name: '配置文件分享', link: 'https://github.com/14Bytes/dotConfigFiles4Share', icon: 'solar:github-alt'}
+                { name: 'Keep', link: 'https://github.com/keephq/keep' },
+                { name: '脚本分享', link: 'https://github.com/J1nH4ng/SCSL' },
+                { name: '配置文件分享', link: 'https://github.com/14Bytes/dotConfigFiles4Share' }
+            ]
+        },
+        {
+            title: '技术博客',
+            icon: 'bx:globe',
+            links: [
+                { name: 'MySQL Performance Blog', link: 'https://mysqlperf.github.io/' }
             ]
         }
     ]
 }
+
