@@ -346,6 +346,13 @@ export default defineConfig({
         collapsed: true,
         items: [
           {
+            text: '错误操作处理办法',
+            collapsed: true,
+            items: [
+              { text: 'rm -rf 后恢复文件', link: '' }
+            ]
+          },
+          {
             text: '需考证书列表',
             collapsed: true,
             items: [
