@@ -76,11 +76,11 @@ next:
 Nginx 安装完成之后，还需要修改默认的配置，使其符合业务的需要，主要的配置方面有：
 
 - [ ] 性能调优
-- [ ] SSL 证书卸载
+- [x] SSL 证书卸载
 - [ ] 负载均衡配置
-- [ ] 反向代理至业务服务器
-  - [ ] 四层代理
-  - [ ] 七层代理
+- [x] 反向代理至业务服务器
+  - [x] 四层代理
+  - [x] 七层代理
 - [ ] 跨域配置
 - [ ] 高性能缓存
 - [ ] 安全配置
@@ -91,13 +91,37 @@ Nginx 安装完成之后，还需要修改默认的配置，使其符合业务�
   - [ ] 限制上传文件权限
   - [ ] 限制上传文件大小
   - [ ] 设置防盗链
-  - [x] 防止 SQL 注入
+  - [x] 防止 SQL 注入和 XSS 攻击
   - [ ] 禁止目录遍历
   - [x] 禁止爬虫
+- [x] 配置监控
 
 #### 性能调优
 
 #### 配置 SSL 卸载
+
+Nginx 可以处理 HTTPS 请求，具体的配置内容如下：
+
+```nginx
+server {
+  listen 443 ssl;
+  server_name wiki.4r3al.team;
+  
+  # 证书位置
+  ssl_certificate /usr/local/nginx/ca/wiki.cer;
+  ssl_certificate_key /usr/local/nginx/ca/wiki.key;
+  # 启用 SSL 缓存
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 1h;
+  # 使用现代加密算法
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!3DES:!ADH:!RC4:!DH:!DHE;
+  ssl_prefer_server_ciphers on;
+  # 启用 OCSP Stapling
+  ssl_stapling on;
+  ssl_stapling_verify on;
+}
+```
 
 #### 配置 HSTS
 
@@ -296,7 +320,7 @@ location /api/api-2 {
 
 #### 设置防盗链
 
-#### 防止 SQL 注入
+#### 防止 SQL 注入和 XSS 攻击
 
 Nginx 本身并不直接处理 SQL 查询，以下的方式只是减少攻击面，完整的防护需要配合 WAF 和在应用程序层面进行真正地实现，这里不介绍 Nginx 集成 WAF 的具体操作以及结合后 WAF 的配置，只使用 Nginx 本身的功能配置来进行攻击面的减少：
 
@@ -361,6 +385,25 @@ server {
   
   # 其他的业务配置
   ...
+}
+```
+
+#### 开启监控
+
+开启 Nginx 自带的监控内容，用于监控 Nginx 的性能，新建 `status.conf` 文件：
+
+```bash
+vim ${nginx-path}/conf/conf.d/status.conf
+```
+
+写入如下内容：
+
+```nginx
+location /status {
+  stub_status;
+  allow 127.0.0.1;
+  allow ::1;
+  deny all;
 }
 ```
 
