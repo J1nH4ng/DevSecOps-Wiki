@@ -345,7 +345,13 @@ export default defineConfig({
         text: '经验总结部分',
         collapsed: true,
         items: [
-          { text: '需考证书列表', link: '' },
+          {
+            text: '需考证书列表',
+            collapsed: true,
+            items: [
+              { text: '软件高级系统架构师证书', link: '' }
+            ]
+          },
           { text: '成长路线图介绍', link: '' },
           { text: '面试题目以及经验分享', link: '' },
           { text: '经验总结与融入新环境', link: '' }
