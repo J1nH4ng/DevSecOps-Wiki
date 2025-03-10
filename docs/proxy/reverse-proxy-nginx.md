@@ -86,7 +86,7 @@ Nginx 安装完成之后，还需要修改默认的配置，使其符合业务�
 - [ ] 安全配置
   - [x] 配置 HSTS
   - [ ] 访问控制
-  - [ ] 限制请求方式
+  - [x] 限制请求方式
   - [ ] 限制请求速率
   - [ ] 限制上传文件权限
   - [ ] 限制上传文件大小
@@ -238,6 +238,57 @@ http {
 #### 配置动态黑名单
 
 #### 限制请求方式
+
+HTTP 的全部请求方式如下：
+
+- GET：请求指定的页面信息，并返回实体主体
+- HEAD：类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头
+- POST：向指定的资源提交数据进行处理请求（例如提交表单或上传文件）。数据被包含在请求体中，POST 请求可能会导致新的资源的建立和/或已有资源的修改
+- PUT：从客户端向服务器传送的数据取代指定文档的内容
+- DELETE：请求服务器删除指定的页面
+- CONNECT：HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器
+- OPTIONS：允许客户端查看服务器的性能
+- TRACE：回显服务器收到的请求，主要用于测试或诊断
+
+大部分的网站只支持 GET 和 POST 方法，其他的方法并不会被响应，会抛出 404 或 405 错误，简单的原因如下：
+
+- OPTIONS：将会造成服务器的信息暴露，如中间件的版本等
+- PUT：由于 PUT 方法自身不带验证机制，可以简单的利用 PUT 上传 WebShell 或其他恶意文件，从而获取敏感数据或服务器权限
+- DELETE：利用 DELETE 方法可以删除服务器上的特定资源，造成恶意攻击
+
+新增一个请求限制文件：
+
+```bash
+vim ${nginx-path}/conf/method_deny.conf
+```
+
+写入如下内容：
+
+```nginx
+if ($request_method !~ ^(GET|POST)$) {
+  return 405;
+}
+```
+
+改配置文件引入在 location 块中，如果需要对接口进行更详细的配置，可以按照如下的方式进行配置：
+
+```nginx
+location /api/api-1 {
+  limit_except GET {
+    deny all;
+  }
+  
+  proxy_pass http://api-server;
+}
+
+location /api/api-2 {
+  limit_except POST {
+    deny all;
+  }
+  
+  proxy_pass http://api-server;
+}
+```
 
 #### 限制请求速率
 
