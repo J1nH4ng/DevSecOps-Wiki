@@ -87,12 +87,12 @@ Nginx 安装完成之后，还需要修改默认的配置，使其符合业务�
   - [x] 配置 HSTS
   - [ ] 访问控制
   - [x] 限制请求方式
-  - [ ] 限制请求速率
-  - [ ] 限制上传文件权限
-  - [ ] 限制上传文件大小
+  - [x] 限制请求速率
+  - [x] 限制上传文件权限
+  - [x] 限制上传文件大小
   - [ ] 设置防盗链
   - [x] 防止 SQL 注入和 XSS 攻击
-  - [ ] 禁止目录遍历
+  - [x] 禁止目录遍历
   - [x] 禁止爬虫
 - [x] 开启监控
 
@@ -330,7 +330,7 @@ if ($request_method !~ ^(GET|POST)$) {
 }
 ```
 
-改配置文件引入在 location 块中，如果需要对接口进行更详细的配置，可以按照如下的方式进行配置：
+改配置文件引入在 location 块中，如果需要对接口进行更详细的配置，可以按照如下的方式进行配置，配置于 HTTP 块内：
 
 ```nginx
 location /api/api-1 {
@@ -352,7 +352,36 @@ location /api/api-2 {
 
 #### 限制请求速率
 
+对于一个 IP 的请求而言。需要限制其请求的连接数和请求的速率，用于防止 DOS 攻击，具体的配置如下，配置于 http 块内：
+
+```nginx
+http {
+  limit_conn_zone $binary_remote_addr zone=addr:10m;
+  limit_conn addr 100;
+  limit_req_zone $binary_remote_addr zone=req_zone:10m rate=10r/s;
+  limit_req zone=req_zone burst=20 nodelay;
+}
+```
+
 #### 限制上传文件
+
+对于文件上传，也需要进行限制，防止上传大文件耗尽服务器资源，同时也要限制允许上传大文件类型，防止上传了 WebShell 或其他危险文件，从而对服务器造成危害行为：
+
+```nginx
+location /uploads/ {
+  root /data/resources;
+  client_body_temp_path /data/resources/tmp;
+  client_max_body 10m;
+  
+  dav_methods PUT DELETE MKCOL COPY MOVE;
+  create_full_put_path on;
+  dev_access user:rw group:rw all:r;
+  
+  if ($request_filename ~* ^.*?\.(php|php5|sh|pl|py)$) {
+    return 403;
+  }
+}
+```
 
 #### 设置防盗链
 
@@ -362,20 +391,35 @@ Nginx 本身并不直接处理 SQL 查询，以下的方式只是减少攻击面
 
 ```nginx
 server {
-  set $block0;
-  if ($request_method !~ ^(GET|POST)$) { set $block1; }
+  if ($request_uri ~* [;'<>] ) {
+    return 444;
+  }
   
-  if ($query_string~* "union.*select.*from") { set $block1; }
-  
-  if ($args~* "<script.*>") { set $block1; }
-  
-  location / {
-    if ($block = 1) { return 444; }
+  if ($args ~* [;'<>] ) {
+    return 444;
   }
 }
 ```
 
 #### 禁止目录遍历
+
+禁止访问隐藏的文件和目录，防止信息和文件泄漏，具体的配置如下：
+
+```nginx
+location ~ /\. {
+  deny all;
+  access_log off;
+  log_not_found off;
+}
+
+location ~* ^/(uploads|images)/.*\.(php|php5|sh|pl|py|asp|aspx|jsp)$ {
+  deny all;
+}
+
+location / {
+  autoindex off;
+}
+```
 
 #### 禁止爬虫
 
