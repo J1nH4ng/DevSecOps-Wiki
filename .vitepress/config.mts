@@ -300,7 +300,11 @@ export default defineConfig({
           {
             text: 'Kubernetes 部分',
             collapsed: true,
-            items: []
+            items: [
+              { text: 'K8S 的安装和配置', link: ''},
+              { text: 'K8S Deployment 详解', link: '' },
+              { text: 'K8S Service 详解', link: '' }
+            ]
           }
         ]
       },
