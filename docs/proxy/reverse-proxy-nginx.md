@@ -230,6 +230,35 @@ stream {
 
 #### 配置跨域
 
+跨域（CORS）：是一种基于 HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其他源（域、协议或端口），使得浏览器允许这些源访问加载自己的资源。跨源资源共享还通过一种机制来检查服务器是否会允许要发送的真实请求，该机制通过浏览器发起一个到服务器托管的跨源资源的 “预检” 请求。在预检中，浏览器发送的头中标示有 HTTP 方法和真实请求中会用到的头。
+
+> [!TIP] 特别说明：
+> 请求方法，域名，端口有一个不一样都是跨域。
+
+具体的配置内容如下：
+
+```nginx
+map $http_origin $cors_origin {
+  default "";
+  ~^https?://(example1\.com|example2\.com)$ $http_origin;
+}
+
+server {
+  listen 80;
+  server_name _;
+  
+  location / {
+    if ($request_method = OPTIONS) {
+      add_header 'Access-Control-Allow-Origin' $cors_origin;
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+      add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type';
+      add_header 'Access-Control-Max-Age' 1728000;
+      return 204;
+    }
+  }
+}
+```
+
 #### 配置 HTTP/2 连接
 
 ```nginx
