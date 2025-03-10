@@ -255,6 +255,13 @@ server {
       add_header 'Access-Control-Max-Age' 1728000;
       return 204;
     }
+    
+    add_header 'Access-Control-Allow-Origin' $cors_origin;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type';
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    
+     proxy_pass http://server;
   }
 }
 ```
