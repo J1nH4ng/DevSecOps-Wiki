@@ -213,7 +213,10 @@ export default defineConfig({
           {
             text: 'RabbitMQ 消息队列部分',
             collapsed: true,
-            items: []
+            items: [
+              { text: 'RabbitMQ 单点服务搭建', link: '' },
+              { text: 'RabbitMQ 仲裁队列搭建', link: '' }
+            ]
           },
           {
             text: 'ElasticSearch 搜索引擎部分',
