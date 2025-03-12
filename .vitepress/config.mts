@@ -370,9 +370,16 @@ export default defineConfig({
         items: [
           { text: 'Linux 常用命令备忘录', link: '' },
           { text: 'Linux 常见错误解决方法', link: '' },
-          { text: 'Linux 网络错误排查方法', link: '' }
+          { text: 'Linux 网络错误排查方法', link: '' },
+          {
+            text: '你管这叫 XX 系列',
+            collapsed: true,
+            items: [
+              { text: '你管这叫网络', link:'' }
+            ]
+          }
         ]
-      }
+      },
     ],
 
     socialLinks: [

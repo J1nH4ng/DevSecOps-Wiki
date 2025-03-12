@@ -69,7 +69,37 @@ next:
 
 #### 配置 Systemd 管理
 
-在每一台服务器上配置完成后，需要进行高可用配置，当然，对于只有一台代理服务器的情况下，配置高可用是没有任何意义的。
+安装完成后，还需要使用 Systemd 软件进行进程管理，具体的配置方法如下：
+
+1. 新建 nginx.service 文件
+
+    ```bash
+    vim /etc/systemd/system/nginx.service
+    ```
+
+2. 写入如下内容
+
+    ```bash
+    [Unit]
+    Description=nginx
+    After=network.target
+    
+    [Service]
+    Type=forking
+    ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+    ExecReload=/usr/local/nginx/sbin/nginx -s reload
+    ExecStop=/usr/local/nginx/sbin/nginx -s quit
+    PrivateTmp=true
+    
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+3. 更新 systemd 配置
+
+    ```bash
+    systemctl daemon-reload
+    ```
 
 ### Nginx 的配置
 
