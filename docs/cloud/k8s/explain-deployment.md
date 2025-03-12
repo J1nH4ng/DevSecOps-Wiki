@@ -6,7 +6,7 @@ layout: doc
 head:
     - - meta
       - name: keywords
-        content: Linux, K8S
+        content: Linux, K8S, Cloud, CNCF
 outline: deep
 prev:
     text: 
