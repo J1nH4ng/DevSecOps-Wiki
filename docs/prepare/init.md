@@ -27,6 +27,7 @@ next:
 
 所有需要配置的清单列表如下：
 
+- [x] 服务器固定 IP 检查 <Badge type="danger" text="特别注意" />
 - [x] 服务器架构检查 <Badge type="warning" text="需要留意" />
   - [x] ARM 64 或 AMD 64
 - [x] 各服务器之间的横向 SSH 是否联通 <Badge type="danger" text="后续影响" />
@@ -57,6 +58,71 @@ next:
 - [ ] 调整内核参数
 
 ## 前置检查
+
+### 固定 IP 检查
+
+对于服务器而已，IP 地址最好是固化在服务器上的，而不是使用路由器进行 DHCP 服务，使用 DHCP 的情况下，一旦服务器因为业务故障停机在重启后可能会导致 IP 地址的变化，从而影响至少两台服务器的正常运行。修改如下的配置文件，配置为固定 IP：
+
+```bash
+vim /etc/sysconfig/network-scripts/ifcfg-ens3
+```
+
+> [!TIP] 注意：
+> 这里的 `ifcfg-ens3` 中的 ens3 为需要修改的网卡，请修改成自己的网络网卡。
+> 
+> 如果有多个网卡，请注意本机的多个网卡中的 IP 地址。
+
+修改配置文件中的如下内容：
+
+```diff
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+// [!code --]
+BOOTPROTO=dhcp
+// [!code ++]
+BOOTPROTO=static
+// [!code ++]
+IPADDR="192.168.50.100"
+// [!code ++]
+NETMASK="255.255.255.0"
+// [!code ++]
+GATEWAY="192.168.50.1"
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+// [!code --]
+IPV6INIT=yes
+// [!code ++]
+IPV6INIT=no
+// [!code --]
+IPV6_AUTOCONF=yes
+// [!code ++]
+IPV6_AUTOCONF=no
+// [!code --]
+IPV6_DEFROUTE=yes
+// [!code ++]
+IPV6_DEFROUTE=no
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens3
+UUID=fa933398-af5a-41e4-bc66-8812ba78cd18
+DEVICE=ens3
+ONBOOT=yes
+```
+
+在上述的配置中将 IPv4 地址修改为固定的 IP 地址，同时禁用了 IPv6 的使用。
+
+修改完成后，需要重启网络服务，如果可以的话，**重启服务器进行验证**。
+
+```bash
+reboot
+```
+
+重启完成后进行 IP 地址的查看，如果与设定的一致则代表成功。如果暂时不能重启服务器，可以进行网卡的重启：
+
+```bash
+systemctl restart NetworkManager
+```
 
 ### 服务器架构检查
 
