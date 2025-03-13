@@ -297,7 +297,8 @@ export default defineConfig({
               { text: 'Docker 网络配置详解', link: '' },
               { text: 'Docker 占用空间清理', link: '' },
               { text: 'Docker 镜像制作', link: '' },
-              { text: 'Docker 镜像瘦身', link: '' }
+              { text: 'Docker 镜像瘦身', link: '' },
+              { text: 'Docker 镜像手动导出导入', link: '' }
             ]
           },
           {
@@ -306,7 +307,8 @@ export default defineConfig({
             items: [
               { text: 'K8S 的安装和配置', link: ''},
               { text: 'K8S Deployment 详解', link: '' },
-              { text: 'K8S Service 详解', link: '' }
+              { text: 'K8S Service 详解', link: '' },
+              { text: 'Helm 的安装配置', link: '' }
             ]
           }
         ]
