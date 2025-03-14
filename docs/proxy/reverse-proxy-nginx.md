@@ -89,6 +89,7 @@ next:
     ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
     ExecReload=/usr/local/nginx/sbin/nginx -s reload
     ExecStop=/usr/local/nginx/sbin/nginx -s quit
+    LimitNOFILE=100000
     PrivateTmp=true
     
     [Install]
