@@ -150,7 +150,9 @@ export default defineConfig({
           { text: '知识文档仓库搭建', link: '' },
           { text: 'NTP 服务器搭建', link: '' },
           { text: 'DNS 服务器搭建', link: '' },
-          { text: 'NFS 服务器搭建', link: '' }
+          { text: 'NFS 服务器搭建', link: '' },
+          { text: 'Docker 镜像仓库搭建', link: ''},
+          { text: 'Docker 镜像质量检查', link: '' }
         ]
       },
       {
