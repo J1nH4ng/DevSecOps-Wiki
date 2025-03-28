@@ -277,12 +277,22 @@ export default defineConfig({
         collapsed: true,
         items: [
           {
-            text: 'ELK 日志链路搭建',
-            link: ''
-          },
-          {
-            text: 'ELK 结合 Kafka 拓展',
-            link: ''
+            text: 'ELK 日志系统',
+            collapsed: true,
+            items: [
+              {
+                text: 'ELK 日志链路搭建',
+                link: ''
+              },
+              {
+                text: 'ELK 结合 Redis 拓展',
+                link: ''
+              },
+              {
+                text: 'ELK 结合 Kafka 拓展',
+                link: ''
+              }
+            ]
           }
         ]
       },
