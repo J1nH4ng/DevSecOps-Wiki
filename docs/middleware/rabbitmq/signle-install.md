@@ -6,7 +6,7 @@ layout: doc
 head:
     - - meta
       - name: keywords
-        content: Nginx, Proxy
+        content: Middleware, RabbitMQ
 outline: deep
 prev:
   text:
