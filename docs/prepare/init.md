@@ -34,6 +34,7 @@ next:
 - [x] 服务器密码强弱性检查 <Badge type="danger" text="特别注意" />
   - [x] 弱密码
 - [x] 修改镜像源
+- [x] 配置 History 格式
 - [x] 安装依赖
 - [x] 时钟同步
 - [ ] 数据磁盘部分
@@ -186,6 +187,26 @@ passwd
 ### 修改镜像源
 
 对于 OpenEuler 和 OpenKylin 系统来说，镜像源默认为国内源地址，不需要进行修改，对于旧的 CentOS 系统来说，镜像源已经不在维护，无需修改。
+
+### 修改 History 格式
+
+在历史命令中增加时间戳，在某些时候，定位一些历史问题、或者一些操作，都是有很不错地帮助意义的，其中的配置如下：
+
+```bash
+vim /etc/profile
+```
+
+写入如下内容：
+
+```bash
+export HISTTIMEFORMAT="`whoami` : %F %Y :"
+```
+
+配置完成后，使用 source 命令加载：
+
+```bash
+source /etc/profile
+```
 
 ### 安装常用软件  <Badge type="tip" text="持续更新" />
 
