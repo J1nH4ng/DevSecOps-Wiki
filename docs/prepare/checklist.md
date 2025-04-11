@@ -12,8 +12,8 @@ prev:
     text: 业务网络架构
     link: posts/0315077c
 next:
-    text: 代码仓库搭建
-    link: posts/894a942b
+    text: 单点登录搭建
+    link: posts/0d2b3729
 ---
 
 # 业务上线检查事项列表
