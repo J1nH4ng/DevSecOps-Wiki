@@ -1,7 +1,7 @@
 ---
-title: Docker 镜像仓库搭建
+title: Docker 容器仓库搭建
 editLink: true
-description: Docker 镜像仓库搭建文档
+description: Docker 容器仓库搭建文档
 layout: doc
 head:
     - - meta
@@ -9,11 +9,11 @@ head:
         content: Linux, CVE
 outline: deep
 prev:
-   text: NFS 服务器搭建
-   link: posts/d6bbd820
+   text: 邮件服务搭建
+   link: posts/d9b66711
 next:
-    text: Docker 镜像质量检查
-    link: posts/2dfd8dd9
+    text: 系统镜像仓库搭建
+    link: posts/1648c8d5
 ---
 
-# Docker 镜像仓库搭建
+# Docker 容器仓库搭建
