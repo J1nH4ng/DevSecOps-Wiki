@@ -102,6 +102,7 @@ export default defineConfig({
     'docs/infrastructure/gitlab.md': 'posts/894a942b.md',
     'docs/infrastructure/code-quality-check.md': 'posts/754dec14.md',
     'docs/infrastructure/mail.md': 'posts/d9b66711.md',
+    'docs/infrastructure/harbor.md': 'posts/ed70e259.md',
     'docs/infrastructure/sys-mirror.md': 'posts/1648c8d5.md',
     'docs/infrastructure/npm-mirror.md': 'posts/45d6daaf.md',
     'docs/infrastructure/maven-mirror.md': 'posts/b4178878.md',
@@ -110,7 +111,7 @@ export default defineConfig({
     'docs/infrastructure/ntp.md': 'posts/8975db6a.md',
     'docs/infrastructure/dns.md': 'posts/6c8dde8f.md',
     'docs/infrastructure/nfs.md': 'posts/d6bbd820.md',
-    'docs/infrastructure/harbor.md': 'posts/02bb9bb8.md',
+    'docs/infrastructure/docker-proxy.md': 'posts/02bb9bb8.md',
     'docs/infrastructure/docker-image-check.md': 'posts/2dfd8dd9.md',
     // 代理服务器部分
     'docs/proxy/load-balance.md': 'posts/79043038.md',
@@ -184,6 +185,7 @@ export default defineConfig({
           { text: '代码仓库搭建', link: 'posts/894a942b' },
           { text: '代码质量检查', link: 'posts/754dec14' },
           { text: '邮件服务搭建', link: 'posts/d9b66711' },
+          { text: '容器仓库搭建', link: 'posts/ed70e259' },
           { text: '系统镜像仓库搭建', link: 'posts/1648c8d5' },
           { text: '前端镜像仓库搭建', link: 'posts/45d6daaf' },
           { text: '后端镜像仓库搭建', link: 'posts/b4178878' },
@@ -192,7 +194,7 @@ export default defineConfig({
           { text: 'NTP 服务器搭建', link: 'posts/8975db6a' },
           { text: 'DNS 服务器搭建', link: 'posts/6c8dde8f' },
           { text: 'NFS 服务器搭建', link: 'posts/d6bbd820' },
-          { text: 'Docker 镜像仓库搭建', link: 'posts/02bb9bb8'},
+          { text: 'Docker 镜像代理搭建', link: 'posts/02bb9bb8'},
           { text: 'Docker 镜像质量检查', link: 'posts/2dfd8dd9' }
         ]
       },
