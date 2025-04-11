@@ -118,6 +118,24 @@ export default defineConfig({
     'docs/proxy/reverse-proxy-haproxy.md': 'posts/5b664292.md',
     'docs/proxy/forward-proxy-nginx.md': 'posts/bf56f649.md',
     'docs/proxy/forward-proxy-squid.md': 'posts/bd53f826.md',
+    // 应用服务器部分
+    // 数据库服务器部分
+      // MySQL
+      // DM
+    // 中间件服务器部分
+    // CI & CD 服务器部分
+    // 系统监控服务器部分
+    // 日志监控部分
+    // 容器化部分
+      // Docker
+      // Kubernetes
+    // 自动化运维部分
+      // Ansible
+      // Terraform
+    // 压力测试部分
+    // 业务迁移部分
+    // 经验总结部分
+    // 细碎知识点部分
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -213,6 +231,11 @@ export default defineConfig({
               { text: 'MySQL 数据备份与恢复', link: '' },
               { text: 'MySQL 性能调优配置', link: '' }
             ]
+          },
+          {
+            text: '达梦数据库部分',
+            collapsed: true,
+            items: []
           }
         ]
       },
