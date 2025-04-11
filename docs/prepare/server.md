@@ -9,8 +9,8 @@ head:
         content: Linux
 outline: deep
 prev:
-  text:
-  link:
+  text: 无风险漏洞
+  link: posts/569b3671
 next:
   text: 服务器初始化
   link: posts/7ec143e2
