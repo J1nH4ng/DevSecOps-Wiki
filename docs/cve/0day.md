@@ -9,7 +9,9 @@ head:
         content: Linux, CVE
 outline: deep
 prev: false
-next: false
+next:
+    text: 中危漏洞
+    link: posts/dd1b7a70
 ---
 
 # 高危漏洞解决手册
