@@ -87,13 +87,37 @@ export default defineConfig({
     },
   },
   rewrites: {
+    // CVE 列表
     'docs/cve/0day.md': 'posts/a7fc9217.md',
+    'docs/cve/1day.md': 'posts/dd1b7a70.md',
+    'docs/cve/1week.md': 'posts/f92de74b.md',
+    'docs/cve/null-day.md': 'posts/569b3671.md',
+    // 前置准备
     'docs/prepare/server.md': 'posts/3edbef81.md',
     'docs/prepare/init.md': 'posts/7ec143e2.md',
     'docs/prepare/network.md': 'posts/0315077c.md',
     'docs/prepare/checklist.md': 'posts/55e3861d.md',
+    // 基础设施部分
+    'docs/infrastructure/oneauth.md': 'posts/0d2b3729.md',
     'docs/infrastructure/gitlab.md': 'posts/894a942b.md',
+    'docs/infrastructure/code-quality-check.md': 'posts/754dec14.md',
+    'docs/infrastructure/mail.md': 'posts/d9b66711.md',
+    'docs/infrastructure/sys-mirror.md': 'posts/1648c8d5.md',
+    'docs/infrastructure/npm-mirror.md': 'posts/45d6daaf.md',
+    'docs/infrastructure/maven-mirror.md': 'posts/b4178878.md',
+    'docs/infrastructure/project-manage.md': 'posts/c422df2b.md',
+    'docs/infrastructure/team-wiki.md': 'posts/7317e374.md',
+    'docs/infrastructure/ntp.md': 'posts/8975db6a.md',
+    'docs/infrastructure/dns.md': 'posts/6c8dde8f.md',
+    'docs/infrastructure/nfs.md': 'posts/d6bbd820.md',
+    'docs/infrastructure/harbor.md': 'posts/02bb9bb8.md',
+    'docs/infrastructure/docker-image-check.md': 'posts/2dfd8dd9.md',
+    // 代理服务器部分
+    'docs/proxy/load-balance.md': 'posts/79043038.md',
     'docs/proxy/reverse-proxy-nginx.md': 'posts/2d22a002.md',
+    'docs/proxy/reverse-proxy-haproxy.md': 'posts/5b664292.md',
+    'docs/proxy/forward-proxy-nginx.md': 'posts/bf56f649.md',
+    'docs/proxy/forward-proxy-squid.md': 'posts/bd53f826.md',
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -119,9 +143,9 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: '高危漏洞', link: 'posts/a7fc9217' },
-          { text: '中危漏洞', link: '' },
-          { text: '低危漏洞', link: '' },
-          { text: '无风险漏洞', link: '' }
+          { text: '中危漏洞', link: 'posts/dd1b7a70' },
+          { text: '低危漏洞', link: 'posts/f92de74b' },
+          { text: '无风险漏洞', link: 'posts/569b3671' }
         ]
       },
       {
@@ -138,32 +162,31 @@ export default defineConfig({
         text: '基础设施部分',
         collapsed: true,
         items: [
-          { text: '单点登录搭建', link: '' },
+          { text: '单点登录搭建', link: 'posts/0d2b3729' },
           { text: '代码仓库搭建', link: 'posts/894a942b' },
-          { text: '容器仓库搭建', link: '' },
-          { text: '代码质量检查', link: '' },
-          { text: '邮件服务搭建', link: '' },
-          { text: '系统镜像仓库搭建', link: '' },
-          { text: '前端镜像仓库搭建', link: '' },
-          { text: '后端镜像仓库搭建', link: '' },
-          { text: '项目管理系统搭建', link: '' },
-          { text: '知识文档仓库搭建', link: '' },
-          { text: 'NTP 服务器搭建', link: '' },
-          { text: 'DNS 服务器搭建', link: '' },
-          { text: 'NFS 服务器搭建', link: '' },
-          { text: 'Docker 镜像仓库搭建', link: ''},
-          { text: 'Docker 镜像质量检查', link: '' }
+          { text: '代码质量检查', link: 'posts/754dec14' },
+          { text: '邮件服务搭建', link: 'posts/d9b66711' },
+          { text: '系统镜像仓库搭建', link: 'posts/1648c8d5' },
+          { text: '前端镜像仓库搭建', link: 'posts/45d6daaf' },
+          { text: '后端镜像仓库搭建', link: 'posts/b4178878' },
+          { text: '项目管理系统搭建', link: 'posts/c422df2b' },
+          { text: '知识文档仓库搭建', link: 'posts/7317e374' },
+          { text: 'NTP 服务器搭建', link: 'posts/8975db6a' },
+          { text: 'DNS 服务器搭建', link: 'posts/6c8dde8f' },
+          { text: 'NFS 服务器搭建', link: 'posts/d6bbd820' },
+          { text: 'Docker 镜像仓库搭建', link: 'posts/02bb9bb8'},
+          { text: 'Docker 镜像质量检查', link: 'posts/2dfd8dd9' }
         ]
       },
       {
         text: '代理服务器部分',
         collapsed: true,
         items: [
-          { text: '负载均衡服务器（LVS）', link: '' },
+          { text: '负载均衡服务器（LVS）', link: 'posts/79043038' },
           { text: '反向代理服务器（Nginx）', link: 'posts/2d22a002.md' },
-          { text: '反向代理服务器（HAproxy）', link: '' },
-          { text: '正向代理服务器（Nginx）', link: '' },
-          { text: '正向代理服务器（Squid）', link: '' }
+          { text: '反向代理服务器（HAproxy）', link: 'posts/5b664292' },
+          { text: '正向代理服务器（Nginx）', link: 'posts/bf56f649' },
+          { text: '正向代理服务器（Squid）', link: 'posts/bd53f826' }
         ]
       },
       {
