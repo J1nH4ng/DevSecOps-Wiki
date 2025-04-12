@@ -120,6 +120,8 @@ export default defineConfig({
     'docs/proxy/forward-proxy-nginx.md': 'posts/bf56f649.md',
     'docs/proxy/forward-proxy-squid.md': 'posts/bd53f826.md',
     // 应用服务器部分
+    'docs/web/frontend.md': 'posts/1a7d5d9d.md',
+    'docs/web/backend.md': 'posts/b8d4c961.md',
     // 数据库服务器部分
       // MySQL
       // DM
@@ -213,8 +215,8 @@ export default defineConfig({
         text: '应用服务器部分',
         collapsed: true,
         items: [
-          { text: '前端服务器', link: '' },
-          { text: '后端服务器', link: '' }
+          { text: '前端服务器', link: 'posts/1a7d5d9d' },
+          { text: '后端服务器', link: 'posts/b8d4c961' }
         ]
       },
       {
