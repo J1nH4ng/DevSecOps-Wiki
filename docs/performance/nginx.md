@@ -24,7 +24,11 @@ next:
 
 ## gzip 压缩详解
 
-[Nginx 官网对于 gzip 的讲解](https://nginx.org/en/docs/http/ngx_http_gzip_module.html)
+> [!WARNING]
+>
+> 使用 SSL/TLS 协议时，压缩响应可能会受到 BREACH 攻击。
+>
+> 详情可见：[Nginx 官网对于 gzip 的讲解](https://nginx.org/en/docs/http/ngx_http_gzip_module.html)
 
 网站的加载速度对于用户的体验是至关重要的，更快地加载时间可以带来更高地用户参与度和转化率。网站加载速度取决于浏览器必须下载的所有文件的大小。减少要传输的文件大小可以使网站不仅加载更快，而且对于那些宽带是使用量计费的提供者更友好。
 
