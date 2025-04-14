@@ -136,6 +136,8 @@ export default defineConfig({
       // Ansible
       // Terraform
     // 压力测试部分
+    // 性能优化部分
+    'docs/performance/nginx.md': 'posts/51c0725e.md',
     // 业务迁移部分
     // 经验总结部分
     // 细碎知识点部分
@@ -400,6 +402,13 @@ export default defineConfig({
             collapsed: true,
             items: []
           }
+        ]
+      },
+      {
+        text: '性能优化部分',
+        collapsed: true,
+        items: [
+          { text: 'Nginx 的性能优化', link: 'posts/51c0725e' },
         ]
       },
       {
