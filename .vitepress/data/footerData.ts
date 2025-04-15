@@ -10,7 +10,8 @@ export const Footer_Data: FooterData ={
             color: 'rgba(168, 194, 223, 1)',
             links: [
                 {name: 'Github', link: 'https://github.com/J1nH4ng' },
-                {name: 'LeetCode', link: 'https://leetcode.cn' }
+                {name: 'LeetCode', link: 'https://leetcode.cn' },
+                {name: 'Vitepress', link: 'https://vitepress.dev/'}
             ]
         },
         {
