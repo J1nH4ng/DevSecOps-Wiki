@@ -376,7 +376,6 @@ export default defineConfig({
             text: 'Docker 部分',
             collapsed: true,
             items: [
-              { text: 'Docker 镜像代理', link: '' },
               { text: 'Docker 的安装和配置', link: '' },
               { text: 'Docker 网络配置详解', link: '' },
               { text: 'Docker 占用空间清理', link: '' },
