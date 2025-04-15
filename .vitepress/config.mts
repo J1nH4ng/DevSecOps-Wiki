@@ -127,6 +127,9 @@ export default defineConfig({
       // DM
     // 中间件服务器部分
     // CI & CD 服务器部分
+      // Jenkins 部分
+        // 物理机部分
+    'docs/cicd/jenkins/physical/install.md': 'posts/6513ad9e.md',
     // 系统监控服务器部分
     // 日志监控部分
     // 容器化部分
@@ -291,7 +294,7 @@ export default defineConfig({
                 text: '物理机安装配置',
                 collapsed: true,
                 items: [
-                  { text: 'Jenkins 的安装配置', link: '' },
+                  { text: 'Jenkins 的安装配置', link: 'posts/6513ad9e' },
                   { text: 'Jenkins 连接 K8S', link: '' },
                   { text: '使用 Shell 脚本发布', link: '' },
                   { text: '使用 Pipeline 发布', link: '' },
