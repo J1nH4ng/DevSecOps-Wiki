@@ -134,6 +134,7 @@ export default defineConfig({
     // 日志监控部分
     // 容器化部分
       // Docker
+    'docs/cloud/docker/install.md': 'posts/4be2011a.md',
       // Kubernetes
     // 自动化运维部分
       // Ansible
@@ -376,7 +377,7 @@ export default defineConfig({
             text: 'Docker 部分',
             collapsed: true,
             items: [
-              { text: 'Docker 的安装和配置', link: '' },
+              { text: 'Docker 的安装和配置', link: 'posts/4be2011a' },
               { text: 'Docker 网络配置详解', link: '' },
               { text: 'Docker 占用空间清理', link: '' },
               { text: 'Docker 镜像制作', link: '' },
