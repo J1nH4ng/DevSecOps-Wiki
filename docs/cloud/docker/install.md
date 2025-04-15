@@ -76,4 +76,4 @@ vim /etc/docker/daemon.json
 
 写入如下内容：
 
-<<< @/files/docker/daemon.json
+<<< @/public/files/docker/daemon.json

@@ -540,7 +540,7 @@ location /status {
 
 ### 完整的 nginx.conf 文件
 
-<<< @/files/nginx/nginx.conf
+<<< @/public/files/nginx/nginx.conf
 
 ### 完整的 proxy.conf 文件
 
