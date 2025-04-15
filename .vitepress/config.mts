@@ -287,11 +287,28 @@ export default defineConfig({
             text: 'Jenkins 部分',
             collapsed: true,
             items: [
-              { text: 'Jenkins 的安装配置', link: '' },
-              { text: 'Jenkins 连接 K8S', link: '' },
-              { text: 'Jenkins 脚本发布配置', link: '' },
-              { text: 'Jenkins Pipeline 发布配置', link: '' }
-            ]
+              {
+                text: '物理机安装配置',
+                collapsed: true,
+                items: [
+                  { text: 'Jenkins 的安装配置', link: '' },
+                  { text: 'Jenkins 连接 K8S', link: '' },
+                  { text: 'Jenkins 脚本发布配置', link: '' },
+                  { text: 'Jenkins Pipeline 发布配置', link: '' },
+                  { text: 'Jenkins Jenkinsfile 发布配置', link: ''}
+                ]
+              },
+              {
+                text: '云容器安装配置',
+                collapsed: true,
+                items: [
+                  { text: 'Jenkins 的安装配置', link: '' },
+                  { text: 'Jenkins 连接 K8S', link: '' },
+                  { text: 'Jenkins Pipeline 发布配置', link: '' },
+                  { text: 'Jenkins Jenkinsfile 发布配置', link: ''}
+                ]
+              }
+            ],
           },
           {
             text: 'Github Actions 部分',
