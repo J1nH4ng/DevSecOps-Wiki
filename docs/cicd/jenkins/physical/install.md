@@ -35,7 +35,15 @@ next:
 
 ## 安装 Java
 
+### 安装 JDK 21
+
+### 安装 JDK 8
+
 ## 安装配置 Maven
+
+### 安装 Maven
+
+### 配置 Maven
 
 ## 安装配置 NodeJS
 
