@@ -41,4 +41,10 @@ next:
 
 ## 安装配置 Docker
 
-<!--@include: ../../../cloud/docker/install.md{19,20}-->
+### 安装
+
+<!--@include: ../../../cloud/docker/install.md{22,60}-->
+
+### 配置
+
+<!--@include: ../../../cloud/docker/install.md{62,93}-->
