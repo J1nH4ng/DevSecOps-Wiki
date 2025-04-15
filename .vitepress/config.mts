@@ -293,9 +293,9 @@ export default defineConfig({
                 items: [
                   { text: 'Jenkins 的安装配置', link: '' },
                   { text: 'Jenkins 连接 K8S', link: '' },
-                  { text: 'Jenkins 脚本发布配置', link: '' },
-                  { text: 'Jenkins Pipeline 发布配置', link: '' },
-                  { text: 'Jenkins Jenkinsfile 发布配置', link: ''}
+                  { text: '使用 Shell 脚本发布', link: '' },
+                  { text: '使用 Pipeline 发布', link: '' },
+                  { text: '使用 Jenkinsfile 发布', link: ''}
                 ]
               },
               {
@@ -304,8 +304,8 @@ export default defineConfig({
                 items: [
                   { text: 'Jenkins 的安装配置', link: '' },
                   { text: 'Jenkins 连接 K8S', link: '' },
-                  { text: 'Jenkins Pipeline 发布配置', link: '' },
-                  { text: 'Jenkins Jenkinsfile 发布配置', link: ''}
+                  { text: '使用 Pipeline 发布', link: '' },
+                  { text: '使用 Jenkinsfile 发布', link: ''}
                 ]
               }
             ],
