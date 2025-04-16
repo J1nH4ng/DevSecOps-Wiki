@@ -446,9 +446,12 @@ export default defineConfig({
         collapsed: true,
         items: [
           {
-            text: '错误操作处理办法',
+            text: 'Linux 使用经验',
             collapsed: true,
             items: [
+              { text: 'Linux 常用命令备忘录', link: '' },
+              { text: 'Linux 常见错误解决方法', link: '' },
+              { text: 'Linux 网络错误排查方法', link: '' },
               { text: 'rm -rf 后恢复文件', link: '' }
             ]
           },
@@ -468,9 +471,13 @@ export default defineConfig({
         text: '细碎知识点部分',
         collapsed: true,
         items: [
-          { text: 'Linux 常用命令备忘录', link: '' },
-          { text: 'Linux 常见错误解决方法', link: '' },
-          { text: 'Linux 网络错误排查方法', link: '' },
+          {
+            text: 'Git 配置与使用部分',
+            collapsed: true,
+            items: [
+              { text: 'Git 基本配置', link: '' }
+            ]
+          },
           {
             text: '你管这叫 XX 系列',
             collapsed: true,
