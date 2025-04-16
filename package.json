@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@nolebase/vitepress-plugin-enhanced-mark": "^2.16.0",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.15.0",
     "@nolebase/vitepress-plugin-git-changelog": "^2.14.0",
     "@nolebase/vitepress-plugin-inline-link-preview": "^2.14.0",
