@@ -3,7 +3,7 @@ import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog';
-import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
+// import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
 import taskLists from "markdown-it-task-checkbox";
 import vitepressProtectPlugin from 'vitepress-protect-plugin';
 import footnote_plugin from 'markdown-it-footnote';
@@ -35,22 +35,22 @@ export default defineConfig({
       })
     ],
 
-    optimizeDeps: {
-      exclude: [
-          '@nolebase/vitepress-plugin-inline-link-preview/client',
-          '@nolebase/vitepress-plugin-enhanced-readabilities/client',
-          '@nolebase/ui',
-          'vitepress'
-      ]
-    },
+    // optimizeDeps: {
+    //   exclude: [
+    //       '@nolebase/vitepress-plugin-inline-link-preview/client',
+    //       '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+    //       '@nolebase/ui',
+    //       'vitepress'
+    //   ]
+    // },
 
-    ssr: {
-      noExternal: [
-          '@nolebase/vitepress-plugin-inline-link-preview',
-          '@nolebase/vitepress-plugin-enhanced-readabilities',
-          '@nolebase/ui',
-      ]
-    }
+    // ssr: {
+    //   noExternal: [
+    //       '@nolebase/vitepress-plugin-inline-link-preview',
+    //       '@nolebase/vitepress-plugin-enhanced-readabilities',
+    //       '@nolebase/ui',
+    //   ]
+    // }
   },
   lang: 'zh-CN',
   title: "DevSecOps Wiki",
@@ -74,7 +74,7 @@ export default defineConfig({
     },
     math: true,
     config(md) {
-      md.use(InlineLinkPreviewElementTransform);
+      // md.use(InlineLinkPreviewElementTransform);
       md.use(taskLists, {
         disabled: true,
         divWrap: false,

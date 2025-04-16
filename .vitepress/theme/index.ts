@@ -14,7 +14,7 @@ import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-chang
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 import { NolebaseInlineLinkPreviewPlugin } from '@nolebase/vitepress-plugin-inline-link-preview/client'
 import '@nolebase/vitepress-plugin-inline-link-preview/client/style.css'
-import { InjectionKey } from '@nolebase/vitepress-plugin-inline-link-preview/client';
+// import { InjectionKey } from '@nolebase/vitepress-plugin-inline-link-preview/client';
 import {
   NolebaseEnhancedReadabilitiesMenu,
   NolebaseEnhancedReadabilitiesScreenMenu,
@@ -43,16 +43,16 @@ export default {
     // ...
     app.use(NolebaseGitChangelogPlugin),
     app.use(NolebaseInlineLinkPreviewPlugin),
-    app.provide(InjectionKey, {
-      location: {
-        'zh-CN': {
-          popup: {
-            loading: '加载中...',
-            loadingAriaLabel: '加载中',
-          }
-        }
-      }
-    }),
+    // app.provide(InjectionKey, {
+    //   location: {
+    //     'zh-CN': {
+    //       popup: {
+    //         loading: '加载中...',
+    //         loadingAriaLabel: '加载中',
+    //       }
+    //     }
+    //   }
+    // }),
     app.component('Home', HomeUnderline),
     umamiAnalytics({id: '', src: 'https://umami.4r3al.team'})
   }
