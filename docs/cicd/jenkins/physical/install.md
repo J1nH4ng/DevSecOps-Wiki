@@ -28,7 +28,7 @@ next:
 
 - [x] JDK 21 （Jenkins 运行所需）
 - [x] JDK 8 （与项目所需 Java 版本保持一致）
-- [ ] Maven （用于打包 Java 项目）
+- [x] Maven （用于打包 Java 项目）
 - [ ] Nvm （用于进行前端 NodeJS 版本切换）
 - [ ] Pnpm （用于前端代码打包）
 - [ ] Docker （用于镜像制作和推送至私有仓库）
@@ -74,7 +74,36 @@ next:
 
 ## 安装配置 Maven
 
+Maven 是一个跨平台的项目管理工具，主要用于管理 Jar 包依赖和一键构建项目。
+
+可以去[官网](https://maven.apache.org/download.cgi)进行下载，也可以选择[清华源](https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3)进行下载，这里我们选择 Maven 3.9.9 版本进行使用。
+
 ### 安装 Maven
+
+安装 Maven 与 Java 类型，下载预编译好地安装包并配置至环境变量即可。
+
+1. 下载 Maven 3.9.9
+
+   ```bash
+   cd /usr/local/src
+
+   wget https://archive.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+   
+   tar -zxvf apache-maven-3.9.9-bin.tar.gz
+   
+   cp -r /usr/local/src/apache-maven-3.9.9 /usr/local/maven3.9
+   ```
+
+2. 配置环境变量
+
+   ```bash
+   echo '
+   PATH=$PATH:/usr/local/maven3.9/bin
+   export PATH' >> /etc/profile
+
+   # 刷新环境变量
+   source /etc/profile
+   ```
 
 ### 配置 Maven
 
