@@ -65,4 +65,10 @@ next:
 
 ### 配置
 
-<!--@include: ../../../cloud/docker/install.md{62,93}-->
+<!--@include: ../../../cloud/docker/install.md{62,80}-->
+
+## 安装配置 Jenkins
+
+### 安装 Jenkins
+
+### 配置 Jenkins
