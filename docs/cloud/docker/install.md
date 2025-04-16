@@ -78,4 +78,4 @@ vim /etc/docker/daemon.json
 
 <<< @/public/files/docker/daemon.json
 
-<a href="/files/docker/daemon.json" download="daemon.json">点击下载该文件</a>
+<a href="/files/docker/daemon.json" download="daemon.json"><Badge type="info">点击下载该文件</Badge></a>
