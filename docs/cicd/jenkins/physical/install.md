@@ -26,8 +26,8 @@ next:
 
 主要需要安装配置的软件如下：
 
-- [ ] JDK 21 （Jenkins 运行所需）
-- [ ] JDK 8 （与项目所需 Java 版本保持一致）
+- [x] JDK 21 （Jenkins 运行所需）
+- [x] JDK 8 （与项目所需 Java 版本保持一致）
 - [ ] Maven （用于打包 Java 项目）
 - [ ] Nvm （用于进行前端 NodeJS 版本切换）
 - [ ] Pnpm （用于前端代码打包）
@@ -40,6 +40,29 @@ next:
 > [!IMPORTANT] 特别说明：
 >
 > 这里的 JDK 21 为 Jenkins 运行所需运行时，不写入环境变量中，在启动 Jenkins 时以绝对路径使用。
+
+1. 使用 XFtp 等工具将 JDK 21 的压缩包上传至后段服务器的 `/usr/local/src` 目录下
+
+2. 解压 JDK 21 的压缩包
+
+    ```bash
+    tar -zxvf jdk-21_linux-x64.tar.gz
+    ```
+
+3. 移动 JDK 21 的目录至 `/usr/local/` 目录下
+
+   ```bash
+   mv jdk-21 /usr/local/jdk21
+   ```
+
+4. 验证 Java 版本
+
+   使用如下命令查看当前的 Java 版本：
+
+    ```bash
+    java -version
+    ```
+
 
 ### 安装 JDK 8
 
