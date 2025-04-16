@@ -29,10 +29,15 @@ next:
 - [x] JDK 21 （Jenkins 运行所需）
 - [x] JDK 8 （与项目所需 Java 版本保持一致）
 - [x] Maven （用于打包 Java 项目）
-- [ ] Nvm （用于进行前端 NodeJS 版本切换）
-- [ ] Pnpm （用于前端代码打包）
+- [ ] NodeJS
+  - [ ] Nvm （用于进行前端 NodeJS 版本切换）
+  - [ ] Pnpm （用于前端代码打包）
 - [ ] Docker （用于镜像制作和推送至私有仓库）
 - [ ] Jenkins
+  - [ ] SSH 登录连接 GitLab 仓库
+  - [ ] Ansible 免密配置
+  - [ ] 配置镜像源
+  - [ ] 配置插件
 
 ## 安装 Java
 
@@ -177,6 +182,50 @@ vim /usr/local/maven3.9/conf/setting.xml
 <a href="/files/maven/settings.xml" download="settings.xml"><Badge type="info">点击下载该文件</Badge></a>
 
 ## 安装配置 NodeJS
+
+### 安装 NVM
+
+由于前端使用的 NodeJS 版本的多样性，为了在后续使用 Jenkins 发布前端项目时方便快速切换至合适的 NodeJS 版本，这里使用 NVM 来管理多个 NodeJS 版本。
+
+1. 下载 NVM
+
+   NVM 发布在其 Github 仓库上，访问地址为：[NVM](https://github.com/nvm-sh/nvm)
+
+   ```bash
+   cd /usr/local/src
+   
+   wget https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.2.tar.gz -O nvm-0.40.2.tar.gz
+   
+   tar -zxvf nvm-0.40.2.tar.gz
+   
+   mv nvm-0.40.2 /usr/local/nvm0.40
+   ```
+
+2. 配置到 Bash 的 Profile 文件中
+
+   ```bash
+   echo "source /usr/local/nvm0.40/nvm.sh" >> ~/.bashrc
+   
+   source ~/.bashrc
+   ```
+
+3. 安装多版本 NodeJS
+
+   ```bash
+   nvm install v14.21.3
+   
+   nvm install v16.20.2
+   
+   nvm install v18.20.5
+   ```
+
+   > [!NOTE] 说明：
+   >
+   > NVM 可能未指定 NodeJS 仓库，从而导致下载失败，可以使用如下命令进行安装：
+   >
+   > ```bash
+   > NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist nvm install 16.14.0
+   > ```
 
 ## 安装配置 Docker
 
