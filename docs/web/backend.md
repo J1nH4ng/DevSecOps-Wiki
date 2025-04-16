@@ -21,7 +21,7 @@ next:
 后端服务器主要用于运行 Java 应用程序，主要需要安装配置的软件应用有：
 
 - [x] JDK 8 （Java 服务所需运行时）
-- [ ] Supervisord （Java 程序管理软件）
+- [ ] Supervisor （Java 程序管理软件）
 - [ ] Nginx （用于配置路由）
 
 ## 安装 JDK 8
@@ -73,7 +73,61 @@ Linux 安装 Java 运行时很简单，下载预先编译好的代码包解压�
     java -version
     ```
 
-## 安装 Supervisord
+## 安装与配置 Supervisor
+
+### 安装 Supervisor
+
+Supervisor 是一个进程管理工具，当进程中断的时候 Supervisor 能自动启动它，可以运行在各种类的 unix 机器上。
+
+Supervisor 使用 Python 语言开发，可以将一个普通的命令行进程变为后台 daemon，并监控进程状态，异常退出时可以自动重启。
+
+下载 supervisor 的源代码并解压：
+
+```bash
+cd /usr/local/src
+
+wget https://files.pythonhosted.org/packages/ce/37/517989b05849dd6eaa76c148f24517544704895830a50289cbbf53c7efb9/supervisor-4.2.5.tar.gz
+
+tar -zxvf supervisor-4.2.5.tar.gz
+```
+
+解压完成之后，使用 python3 进行安装：
+
+```bash
+cd /usr/local/src/supervisor-4.2.5
+
+python3 setup.py install
+```
+
+等待安装完成后，还需要将命令配置到全局中便于使用，当然，不配置也是可以的。
+
+```bash
+ln -sf /usr/local/bin/supervisor* /usr/bin/
+
+ln -sf /usr/local/bin/echo_supervisord_conf /usr/bin/
+```
+
+配置完成后，我们就可以通过如下命令查看 supervisor 的版本了：
+
+```bash
+supervisord --version
+```
+
+安装完成后，我们使用 Systemd 来管理 Supervisor 本身的进程：
+
+```bash
+vim /etc/systemd/system/supervisord.service
+```
+
+写入如下内容：
+
+<<< @/public/files/systemd/supervisord.service{ini}
+
+<a href="/files/systemd/supervisord.service" download="supervisord.service"><Badge type="info">点击下载该文件</Badge></a>
+
+如果没有配置至全局命令，请替换其中的 `/usr/bin/supervisord` 为 Supervisor 安装后的绝对路径。
+
+### 配置 Supervisor
 
 ## 安装配置 Nginx
 
