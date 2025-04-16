@@ -37,9 +37,17 @@ next:
 
 ### 安装 JDK 21
 
+> [!IMPORTANT] 特别说明：
+>
+> 这里的 JDK 21 为 Jenkins 运行所需运行时，不写入环境变量中，在启动 Jenkins 时以绝对路径使用。
+
 ### 安装 JDK 8
 
-<!--@include: ../../../web/backend.md{33,55}-->
+> [!IMPORTANT] 特别说明：
+> 
+> 这里的 JDK 8 与业务应用生产环境使用版本一致，并写入至环境变量中。
+
+<!--@include: ../../../web/backend.md{33,75}-->
 
 ## 安装配置 Maven
 
