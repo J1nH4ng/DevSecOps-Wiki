@@ -174,7 +174,7 @@ vim /usr/local/maven3.9/conf/setting.xml
    </proxies>
    ```
 
-<a href="/files/maven/settings.xml" download="daemon.json"><Badge type="info">点击下载该文件</Badge></a>
+<a href="/files/maven/settings.xml" download="settings.xml"><Badge type="info">点击下载该文件</Badge></a>
 
 ## 安装配置 NodeJS
 
