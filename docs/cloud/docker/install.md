@@ -77,3 +77,5 @@ vim /etc/docker/daemon.json
 写入如下内容：
 
 <<< @/public/files/docker/daemon.json
+
+<a href="/files/docker/daemon.json" download="daemon.json">点击下载该文件</a>
