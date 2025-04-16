@@ -29,10 +29,10 @@ next:
 - [x] JDK 21 （Jenkins 运行所需）
 - [x] JDK 8 （与项目所需 Java 版本保持一致）
 - [x] Maven （用于打包 Java 项目）
-- [ ] NodeJS
-  - [ ] Nvm （用于进行前端 NodeJS 版本切换）
-  - [ ] Pnpm （用于前端代码打包）
-- [ ] Docker （用于镜像制作和推送至私有仓库）
+- [x] NodeJS
+  - [x] Nvm （用于进行前端 NodeJS 版本切换）
+  - [x] Pnpm （用于前端代码打包）
+- [x] Docker （用于镜像制作和推送至私有仓库）
 - [ ] Jenkins
   - [ ] SSH 登录连接 GitLab 仓库
   - [ ] Ansible 免密配置
@@ -226,6 +226,24 @@ vim /usr/local/maven3.9/conf/setting.xml
    > ```bash
    > NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist nvm install 16.14.0
    > ```
+
+### 安装 Pnpm
+
+安装完 NodeJS 后，可以使用 NodeJS 自带的 npm 包管理器安装 pnpm。同时，为了保证前端第三方依赖包的兼容性，指定 pnpm 的版本为 8.0.0。
+
+```bash
+npm install -g pnpm@8.0.0
+```
+
+安装完成后，使用如下命令设置 pnpm 的源为国内镜像源：
+
+```bash
+pnpm config set registry https://registry.npmmirror.com
+```
+
+> [!TIP] 注意：
+> 
+> 使用 NVM 切换 NodeJS 版本后，仍然需要重新执行上述命令，各个 NodeJS 版本之间的配置是独立的。
 
 ## 安装配置 Docker
 
