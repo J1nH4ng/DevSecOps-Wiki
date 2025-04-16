@@ -32,6 +32,7 @@ next:
 - [ ] Nvm （用于进行前端 NodeJS 版本切换）
 - [ ] Pnpm （用于前端代码打包）
 - [ ] Docker （用于镜像制作和推送至私有仓库）
+- [ ] Jenkins
 
 ## 安装 Java
 
@@ -106,6 +107,74 @@ Maven 是一个跨平台的项目管理工具，主要用于管理 Jar 包依赖
    ```
 
 ### 配置 Maven
+
+Maven 配置主要需要配置如下内容：
+
+- [x] 修改第三方仓库为国内镜像源
+- [x] 配置私有 Nexus 仓库认证配置
+- [x] 配置 HTTP 代理认证用于访问私有 Nexus 仓库
+
+Maven 的配置文件为安装目录下的 `/conf/setting.xml` 文件：
+
+```bash
+vim /usr/local/maven3.9/conf/setting.xml
+```
+
+1. 修改第三方仓库为国内镜像源
+
+   ```xml
+   <mirror>
+	    <id>aliyunmaven</id>
+	    <mirrorOf>*</mirrorOf>
+	    <name>阿里云仓库</name>
+	    <url>https://maven.aliyun.com/repository/public</url>
+   </mirror>
+   ```
+
+2. 配置私有 Nexus 仓库认证配置
+
+   server 块部分：
+   
+   ```xml
+   <server>
+        <id>Nexus</id>
+        <username>${username}</username>
+        <password>${password}</password>
+   </server>
+   ```
+   
+   mirror 块部署：   
+
+   ```xml
+   <mirror>
+        <id>Nexus</id>
+	    <mirrorOf>*</mirrorOf>
+	    <url>https://nexus.4r3al.team/repository/maven-public/</url>
+   </mirror>
+   ```
+
+3. 配置 HTTP 代理认证用于访问私有 Nexus 仓库
+
+   ```xml
+   <proxies>
+      <proxy>
+    	 <id>http-proxy</id>
+    	 <active>true</active>
+    	 <protocol>http</protocol>
+         <host>proxy.4r3al.team</host>
+    	 <port>80</port>
+      </proxy>
+      <proxy>
+         <id>http-proxy</id>
+         <active>true</active>
+         <protocol>https</protocol>
+         <host>proxy.4r3al.team</host>
+         <port>443</port>
+      </proxy>
+   </proxies>
+   ```
+
+<a href="/files/maven/settings.xml" download="daemon.json"><Badge type="info">点击下载该文件</Badge></a>
 
 ## 安装配置 NodeJS
 
